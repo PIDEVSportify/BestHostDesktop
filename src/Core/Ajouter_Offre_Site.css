@@ -1,0 +1,60 @@
+#save
+{
+    -fx-background-color :linear-gradient(to top left, #00E676, #D4CEE3);
+    -fx-background-radius :  50px;
+}
+#save:hover
+{
+    -fx-background-color :linear-gradient(to top left, #00E676, #D4CEE3);
+    -fx-background-radius :  50px;
+}
+#save:pressed
+{
+    -fx-background-color : #00E676 ;
+    -fx-background-radius :  50px;
+}
+#clean
+{
+    -fx-background-color :linear-gradient(to top left, #ff0000, #D4CEE3);
+    -fx-background-radius :  50px;
+}
+#clean:hover
+{
+    -fx-background-color :linear-gradient(to top left, #ff0000, #D4CEE3);
+    -fx-background-radius :  50px;
+}
+#clean:pressed
+{
+    -fx-background-color : #ff0000 ;
+    -fx-background-radius :  50px;
+}
+#button
+ {
+     -fx-background-color :linear-gradient(to top left, #1f8bff, #D4CEE3);
+     -fx-background-radius :  50px;
+ }
+#button:hover
+{
+    -fx-background-color :linear-gradient(to top left, #1f8bff, #D4CEE3);
+    -fx-background-radius :  50px;
+}
+#button:pressed
+{
+    -fx-background-color :#1f8bff;
+    -fx-background-radius :  50px;
+}
+#Dashboardbutton
+{
+    -fx-background-color :linear-gradient(to top left, #000000, #D4CEE3);
+    -fx-background-radius :  50px;
+}
+#Dashboardbutton:hover
+{
+    -fx-background-color :linear-gradient(to top left, #000000, #D4CEE3);
+    -fx-background-radius :  50px;
+}
+#Dashboardbutton:pressed
+{
+    -fx-background-color : #000000;
+    -fx-background-radius :  50px;
+}

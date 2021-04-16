@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.Dashboard">
+    <stylesheets>
+        <URL value="@tableview.css" />
+    </stylesheets>
+    <children>
+        <VBox layoutX="26.0" layoutY="22.0" spacing="15.0" />
+        <VBox layoutX="87.0" layoutY="22.0" prefHeight="130.0" prefWidth="129.0" spacing="10.0" />
+        <HBox layoutX="26.0" layoutY="202.0" spacing="10.0" translateY="38.0" />
+        <Pane layoutY="59.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Text layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" wrappingWidth="245.13671875">
+            <font>
+                <Font name="Bauhaus 93" size="32.0" />
+            </font>
+        </Text>
+        <Button fx:id="gestionoffersbutton" layoutX="14.0" layoutY="152.0" mnemonicParsing="false" onAction="#gestionoffers" prefHeight="31.0" prefWidth="107.0" text="Gestion Offers" textFill="WHITE">
+            <font>
+                <Font name="Bauhaus 93" size="14.0" />
+            </font></Button>
+        <Button fx:id="statisticsbutton" layoutX="14.0" layoutY="208.0" mnemonicParsing="false" onAction="#statistics" prefHeight="31.0" prefWidth="78.0" text="statistics" textFill="WHITE">
+            <font>
+                <Font name="Bauhaus 93" size="14.0" />
+            </font></Button>
+        <Button fx:id="gestionsitesbutton" layoutX="13.0" layoutY="97.0" mnemonicParsing="false" onAction="#Gestionsites" prefHeight="30.0" prefWidth="107.0" text="Gestion Sites" textFill="WHITE">
+            <font>
+                <Font name="Bauhaus 93" size="14.0" />
+            </font></Button>
+      <ImageView fx:id="imageviewselim" fitHeight="61.0" fitWidth="68.0" layoutX="481.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="pdfbutton" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" onAction="#pdf" prefHeight="31.0" prefWidth="78.0" text="Pdf" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

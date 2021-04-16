@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import java.net.URL?>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="552.0" styleClass="btn" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.AjouterOffre">
+    <stylesheets>
+        <URL value="@Ajouter_Offre_Site.css" />
+    </stylesheets>
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="384.0">
+            <children>
+                <Text fx:id="Title_offre" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Offre">
+                    <font>
+                        <Font name="Bauhaus 93" size="32.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </Text>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Id:" translateX="-9.0" wrappingWidth="102.13671875">
+                    <font>
+                        <Font name="Century Gothic" size="21.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="Id_offre" prefHeight="25.0" prefWidth="358.0">
+                    <font>
+                        <Font name="Century Gothic" size="20.0" />
+                    </font>
+                </TextField>
+            </children>
+            <VBox.margin>
+                <Insets top="30.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="89.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre des Places:" translateX="-9.0" wrappingWidth="102.13671875">
+                    <font>
+                        <Font name="Century Gothic" size="21.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="places_offre" prefHeight="25.0" prefWidth="358.0">
+                    <font>
+                        <Font name="Century Gothic" size="20.0" />
+                    </font>
+                </TextField>
+            </children>
+            <VBox.margin>
+                <Insets top="17.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="64.0" translateY="-15.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date début:" translateX="-29.0" translateY="5.0" wrappingWidth="102.13671875">
+                    <font>
+                        <Font name="Century Gothic" size="21.0" />
+                    </font>
+                </Text>
+                <DatePicker fx:id="datedebut_offre" prefHeight="38.0" prefWidth="318.0" style="-fx-font-size: 18px" translateX="-19.0" />
+            </children>
+            <VBox.margin>
+                <Insets top="17.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin:" translateX="-29.0" wrappingWidth="102.13671875">
+                    <font>
+                        <Font name="Century Gothic" size="21.0" />
+                    </font>
+                </Text>
+                <DatePicker fx:id="datefin_offre" prefHeight="38.0" prefWidth="318.0" style="-fx-font-size: 18px" translateX="-19.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="10.0" layoutY="114.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix:" translateX="-9.0" wrappingWidth="102.13671875">
+                    <font>
+                        <Font name="Century Gothic" size="21.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="prix_offre" prefHeight="25.0" prefWidth="358.0">
+                    <font>
+                        <Font name="Century Gothic" size="20.0" />
+                    </font>
+                </TextField>
+            </children>
+            <VBox.margin>
+                <Insets top="17.0" />
+            </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="62.0" prefWidth="384.0">
+            <VBox.margin>
+                <Insets top="25.0" />
+            </VBox.margin>
+            <children>
+                <Button fx:id="save" onAction="#saveoffre" prefHeight="45.0" prefWidth="160.0" styleClass="btn" text="Save">
+                    <HBox.margin>
+                        <Insets right="8.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Bauhaus 93" size="24.0" />
+                    </font>
+                </Button>
+                <Button fx:id="clean" layoutX="132.0" layoutY="19.0" onAction="#cleanoffre" prefHeight="45.0" prefWidth="160.0" styleClass="btn" text="Clean">
+                    <HBox.margin>
+                        <Insets left="8.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Bauhaus 93" size="24.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+</VBox>

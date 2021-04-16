@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.Affichersites">
+    <stylesheets>
+        <URL value="@tableview.css" />
+    </stylesheets>
+    <children>
+        <VBox layoutX="26.0" layoutY="22.0" spacing="15.0" />
+        <VBox layoutX="87.0" layoutY="22.0" prefHeight="130.0" prefWidth="129.0" spacing="10.0" />
+        <HBox layoutX="26.0" layoutY="202.0" spacing="10.0" translateY="38.0" />
+        <TableView fx:id="Tablesites" layoutX="15.0" layoutY="97.0" prefHeight="367.0" prefWidth="693.0">
+            <columns>
+                <TableColumn fx:id="IDColumn" prefWidth="35.0" text="ID" />
+                <TableColumn fx:id="ID_OffreColumn" prefWidth="67.60000610351562" text="ID_Offre" />
+                <TableColumn fx:id="LocalisationColumn" prefWidth="85.20001983642578" text="Localisation" />
+                <TableColumn fx:id="DescriptionColumn" prefWidth="130.39999389648438" text="Description" />
+                <TableColumn fx:id="TypeColumn" prefWidth="94.4000244140625" text="Type" />
+            <TableColumn fx:id="ImageColumn" prefWidth="209.99996948242188" text="Image" />
+            <TableColumn fx:id="RatingColumn" prefWidth="73.5999755859375" text="Rating" />
+            </columns>
+        </TableView>
+        <Pane layoutY="59.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Text layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sites Details" wrappingWidth="245.13671875">
+            <font>
+                <Font name="Bauhaus 93" size="32.0" />
+            </font>
+        </Text>
+          <Button fx:id="updateButton" layoutX="92.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="Update" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+          <Button fx:id="deleteButton" layoutX="170.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+          <Button fx:id="insertButton" layoutX="17.0" layoutY="480.0" mnemonicParsing="false" onAction="#AjouterSite" prefHeight="30.0" prefWidth="67.0" text="Insert" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+      <ImageView fx:id="Imagecamping" fitHeight="246.0" fitWidth="130.0" layoutX="727.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="refreshbutton" layoutX="248.0" layoutY="480.0" mnemonicParsing="false" onAction="#ActualiserSite" prefHeight="30.0" prefWidth="67.0" text="Refresh" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+      <Button fx:id="Dashboardbutton" layoutX="325.0" layoutY="480.0" mnemonicParsing="false" onAction="#Dashboardsite" prefHeight="30.0" prefWidth="90.0" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
