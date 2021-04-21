@@ -61,6 +61,7 @@ public class Afficheroffers implements Initializable {
         DatedébutColumn.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
         DatefinColumn.setCellValueFactory(new PropertyValueFactory<>("date_fin"));
         PrixColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        IDColumn.setVisible(false);
         Actualiser();
         Tableoffers.setOnMousePressed(e1 -> {
             updateButton.setOnAction(e -> {
@@ -76,7 +77,6 @@ public class Afficheroffers implements Initializable {
                 }
                 AjouterOffre ajouteroffre = loader.getController();
                 ajouteroffre.setUpdate_dynamically(true);
-                ajouteroffre.setId_offre(false);
                 ajouteroffre.setTitle_offre("Modifier Offre");
                 if(!verif.get()) {
                     assert offermodify != null;
@@ -98,7 +98,11 @@ public class Afficheroffers implements Initializable {
                 if(!verif.get()) {
                     assert offerdelete != null;
                     SupprimerOffre supprimerOffre = new SupprimerOffre(offerdelete.getId());
-                    supprimerOffre.deleteoffre();
+                    try {
+                        supprimerOffre.deleteoffre();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
                     Actualiser();
                 }
                 else

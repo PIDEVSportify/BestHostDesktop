@@ -25,8 +25,6 @@ public class AjouterOffre implements Initializable {
     @FXML
     public Text Title_offre;
     @FXML
-    private TextField Id_offre;
-    @FXML
     private TextField places_offre;
     @FXML
     private DatePicker datedebut_offre;
@@ -35,9 +33,7 @@ public class AjouterOffre implements Initializable {
     @FXML
     private TextField prix_offre;
 
-    public void setId_offre(boolean b) {
-        this.Id_offre.setEditable(b);
-    }
+    private int save_id;
 
     public boolean isUpdate_dynamically() {
         return update_dynamically;
@@ -64,21 +60,16 @@ public class AjouterOffre implements Initializable {
     }
 
     public void saveoffre(ActionEvent actionEvent) throws SQLException {
-        boolean check=false;
         String date_debut = String.valueOf(datedebut_offre.getValue());
         String date_fin = String.valueOf(datefin_offre.getValue());
 
-            if (convert_string_int(Id_offre, places_offre, prix_offre) && compareDates(date_debut,date_fin)) {
+            if (convert_string_int(places_offre, prix_offre) && compareDates(date_debut,date_fin)) {
                 Offre_c c = new Offre_c();
-                Predicate<offre> p1 = o -> o.getId()==getVect().get(0);
-                if(c.result().stream().anyMatch(p1))
-                    check=true;
-                if(isUpdate_dynamically())
-                    check=false;
-                offre offre=new offre(getVect().get(0), getVect().get(1),date_debut,date_fin,getVect().get(2));
-                if(!check){
-                    if(isUpdate_dynamically())
-                    c.Update(offre);
+                offre offre=new offre(getVect().get(0),date_debut,date_fin,getVect().get(1));
+                    if(isUpdate_dynamically()) {
+                        offre offreupdate=new offre(save_id,getVect().get(0),date_debut,date_fin,getVect().get(1));
+                        c.Update(offreupdate);
+                    }
                     else
                     c.Add(offre);
                     getVect().clear();
@@ -89,14 +80,6 @@ public class AjouterOffre implements Initializable {
                     else
                         alert.setContentText("You have successfully added a new offer.");
                         alert.showAndWait();
-                }
-                else{
-                    getVect().clear();
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setContentText("You enter an ID that already exists.");
-                    alert.showAndWait();
-                }
             }
     }
 
@@ -128,17 +111,16 @@ public class AjouterOffre implements Initializable {
         return false;
     }
 
-    public boolean convert_string_int(TextField t1, TextField t2, TextField t3){
+    public boolean convert_string_int(TextField t2, TextField t3){
         try {
-            if (Integer.parseInt(t1.getText())<=0 || (Integer.parseInt(t2.getText())<2 || Integer.parseInt(t2.getText())>10) || (Integer.parseInt(t3.getText())<=0 || Integer.parseInt(t3.getText())>100)) {
+            if ((Integer.parseInt(t2.getText())<2 || Integer.parseInt(t2.getText())>10) || (Integer.parseInt(t3.getText())<=0 || Integer.parseInt(t3.getText())>100)) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
-                alert.setContentText("Id_offre: must be positive \nplaces_offre: between 2 and 10 \nprix_offre: between 1 and 100  ");
+                alert.setContentText("\nplaces_offre: between 2 and 10 \nprix_offre: between 1 and 100  ");
                 alert.showAndWait();
                 getVect().clear();
                 return false;
             }
-        setVect(Integer.parseInt(t1.getText()));
         setVect(Integer.parseInt(t2.getText()));
         setVect(Integer.parseInt(t3.getText()));
         return true;
@@ -153,17 +135,17 @@ public class AjouterOffre implements Initializable {
     }
 
     public void cleanoffre(ActionEvent actionEvent) {
-       if(!isUpdate_dynamically())
-       Id_offre.clear();
-       places_offre.clear();
-       datedebut_offre.setValue(null);
-       datefin_offre.setValue(null);
-       prix_offre.clear();
+      if(!isUpdate_dynamically())
+          this.save_id=0;
+      this.places_offre.clear();
+      this.datedebut_offre.setValue(null);
+      this.datefin_offre.setValue(null);
+      this.prix_offre.clear();
     }
 
     public void addvalues(int a,int b,String c,String d,int e)
     {
-        this.Id_offre.setText(String.valueOf(a));
+        this.save_id=a;
         this.places_offre.setText(String.valueOf(b));
         this.datedebut_offre.setValue(LocalDate.parse(c));
         this.datefin_offre.setValue(LocalDate.parse(d));

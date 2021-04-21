@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
 <?import javafx.scene.layout.*?>
-<?import org.controlsfx.control.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.Rating">
+<AnchorPane fx:id="ecran" prefHeight="477.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Core.Rating">
+   <stylesheets>
+      <URL value="@Ajouter_Offre_Site.css" />
+   </stylesheets>
    <children>
-      <Rating fx:id="rating" layoutX="135.0" layoutY="184.0" onMouseClicked="#detect" rating="0.0" />
+      <JFXListView fx:id="Listview" focusTraversable="false" prefHeight="477.0" prefWidth="795.0" />
    </children>
 </AnchorPane>

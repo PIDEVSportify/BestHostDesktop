@@ -7,6 +7,7 @@ import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,6 +48,7 @@ public class Dashboard implements Initializable {
         stage.setTitle("Offers");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(e -> Platform.exit());
     }
 
     public void statistics(ActionEvent actionEvent) throws IOException {
@@ -56,6 +58,7 @@ public class Dashboard implements Initializable {
         stage.setTitle("Statistics");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(e -> Platform.exit());
     }
 
     public void Gestionsites(ActionEvent actionEvent) throws IOException {
@@ -65,6 +68,7 @@ public class Dashboard implements Initializable {
         stage.setTitle("Sites");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(e -> Platform.exit());
     }
 
     public void returndashboard(ActionEvent actionEvent) throws IOException {
@@ -74,6 +78,7 @@ public class Dashboard implements Initializable {
         stage.setTitle("Dashboard");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(e -> Platform.exit());
     }
 
     @Override
@@ -100,40 +105,6 @@ public class Dashboard implements Initializable {
             table.setWidthPercentage(100);
             float[] columnWidths = {1f, 1f, 1f,1f, 1f};
             table.setWidths(columnWidths);
-
-            PdfPCell cell1 = new PdfPCell(new Paragraph("Id"));
-            cell1.setBorderColor(BaseColor.BLUE);
-            cell1.setPaddingLeft(10);
-            cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table.addCell(cell1);
-            PdfPCell cell2 = new PdfPCell(new Paragraph( "Nombre des places"));
-            cell2.setBorderColor(BaseColor.BLUE);
-            cell2.setPaddingLeft(10);
-            cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell2.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table.addCell(cell2);
-
-            PdfPCell cell3 = new PdfPCell(new Paragraph("Date début"));
-            cell3.setBorderColor(BaseColor.BLUE);
-            cell3.setPaddingLeft(10);
-            cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table.addCell(cell3);
-
-            PdfPCell cell4 = new PdfPCell(new Paragraph("Date fin"));
-            cell3.setBorderColor(BaseColor.BLUE);
-            cell3.setPaddingLeft(10);
-            cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table.addCell(cell4);
-
-            PdfPCell cell5 = new PdfPCell(new Paragraph("Prix"));
-            cell3.setBorderColor(BaseColor.BLUE);
-            cell3.setPaddingLeft(10);
-            cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell3.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table.addCell(cell5);
             for(offre l:c.result()) {
                 table.addCell(String.valueOf(l.getId()));
                 table.addCell(String.valueOf(l.getNombre_places()));
@@ -141,65 +112,24 @@ public class Dashboard implements Initializable {
                 table.addCell(l.getDate_fin());
                 table.addCell(String.valueOf(l.getPrix()));
             }
-
-            PdfPTable table1 = new PdfPTable(6);
-            table1.setWidthPercentage(100);
-            float[] columnWidths1 = {1f, 1f, 1f,1f, 1f,1f};
-            table1.setWidths(columnWidths1);
-
-            PdfPCell cell11 = new PdfPCell(new Paragraph("Id"));
-            cell11.setBorderColor(BaseColor.BLUE);
-            cell11.setPaddingLeft(10);
-            cell11.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell11.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table1.addCell(cell11);
-            PdfPCell cell22 = new PdfPCell(new Paragraph( "Id_offere"));
-            cell22.setBorderColor(BaseColor.BLUE);
-            cell22.setPaddingLeft(10);
-            cell22.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell22.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table1.addCell(cell22);
-
-            PdfPCell cell33 = new PdfPCell(new Paragraph("Localisation_camping"));
-            cell33.setBorderColor(BaseColor.BLUE);
-            cell33.setPaddingLeft(10);
-            cell33.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell33.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table1.addCell(cell33);
-
-            PdfPCell cell44 = new PdfPCell(new Paragraph("Description_camping"));
-            cell44.setBorderColor(BaseColor.BLUE);
-            cell44.setPaddingLeft(10);
-            cell44.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell44.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table1.addCell(cell44);
-
-            PdfPCell cell55 = new PdfPCell(new Paragraph("Type_camping"));
-            cell55.setBorderColor(BaseColor.BLUE);
-            cell55.setPaddingLeft(10);
-            cell55.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell55.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table1.addCell(cell55);
-
-            PdfPCell cell66 = new PdfPCell(new Paragraph("Image_camping"));
-            cell66.setBorderColor(BaseColor.BLUE);
-            cell66.setPaddingLeft(10);
-            cell66.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell66.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            table1.addCell(cell66);
-            for(camping lp:ca.result()) {
-                table1.addCell(String.valueOf(lp.getId()));
-                table1.addCell(String.valueOf(lp.getOffre_id_id()));
-                table1.addCell(lp.getLocalisation_camping());
-                table1.addCell(lp.getDescription_camping());
-                table1.addCell(lp.getType_camping());
-                table1.addCell(lp.getImage_camping());
-            }
             document.add(cp);
             document.add( Chunk.NEWLINE );
             document.add(table);
+
+            table = new PdfPTable(6);
+            table.setWidthPercentage(100);
+            float[] columnWidths1 = {1f, 1f, 1f,1f, 1f,1f};
+            table.setWidths(columnWidths1);
+            for(camping lp:ca.result()) {
+                table.addCell(String.valueOf(lp.getId()));
+                table.addCell(String.valueOf(lp.getOffre_id_id()));
+                table.addCell(lp.getLocalisation_camping());
+                table.addCell(lp.getDescription_camping());
+                table.addCell(lp.getType_camping());
+                table.addCell(lp.getImage_camping());
+            }
             document.add( Chunk.NEWLINE );
-            document.add(table1);
+            document.add(table);
 
             document.close();
             writer.close();

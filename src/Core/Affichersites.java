@@ -39,7 +39,7 @@ public class Affichersites implements Initializable {
     @FXML
     public TableColumn<camping,Integer> IDColumn;
     @FXML
-    public TableColumn<camping,Integer> ID_OffreColumn;
+    public TableColumn<camping,String> OffreColumn;
     @FXML
     public TableColumn<camping,String> LocalisationColumn;
     @FXML
@@ -49,7 +49,7 @@ public class Affichersites implements Initializable {
     @FXML
     public TableColumn<camping, Image> ImageColumn;
     @FXML
-    public TableColumn<camping,Integer> RatingColumn;
+    public TableColumn<camping,Double> RatingColumn;
     @FXML
     public ImageView Imagecamping;
     @FXML
@@ -63,7 +63,7 @@ public class Affichersites implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AtomicBoolean verif= new AtomicBoolean(false);
         IDColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        ID_OffreColumn.setCellValueFactory(new PropertyValueFactory<>("offre_id_id"));
+        OffreColumn.setCellValueFactory(new PropertyValueFactory<>("fulloffre"));
         LocalisationColumn.setCellValueFactory(new PropertyValueFactory<>("localisation_camping"));
         DescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description_camping"));
         TypeColumn.setCellValueFactory(new PropertyValueFactory<>("type_camping"));
@@ -88,6 +88,8 @@ public class Affichersites implements Initializable {
             return cell;
         });
        ImageColumn.setCellValueFactory(new PropertyValueFactory<camping, Image>("image_site"));
+       RatingColumn.setCellValueFactory(new PropertyValueFactory<camping, Double>("ratecamping"));
+       IDColumn.setVisible(false);
        Actualiser();
        Tablesites.setOnMousePressed(e1 ->{
            updateButton.setOnAction(e ->{
@@ -103,7 +105,6 @@ public class Affichersites implements Initializable {
                }
                AjouterSite ajoutersite = loader.getController();
                ajoutersite.setUpdate_dynamically(true);
-               ajoutersite.setId_camping(false);
                ajoutersite.setTitle_site("Modifier Site");
                if(!verif.get()) {
                    assert campingmodify != null;
@@ -149,12 +150,23 @@ public class Affichersites implements Initializable {
 
     public void Actualiser() {
         Camping_c c = new Camping_c();
+        Offre_c c1=new Offre_c();
         try {
             siteslist.clear();
             Tablesites.getSelectionModel().clearSelection();
             for(camping l:c.result()) {
+                if(l.getOffre_id_id()!=0)
+                for(offre l1:c1.result()){
+                    if(l.getOffre_id_id()==l1.getId())
+                        l.setFulloffre("Nombre des places: "+l1.getNombre_places()+"\n"+"Date début: "+l1.getDate_debut()+"\n"+"Date fin: "+l1.getDate_fin()+"\n"+"Prix: "+l1.getPrix());
+                }
+                else
+                    l.setFulloffre("Pas d'offre\npour le moment");
                 Image im = new Image(l.getImage_camping(), this.Imagecamping.getFitWidth(), this.Imagecamping.getFitHeight(), true, true);
-                siteslist.add(new camping(l.getId(),l.getOffre_id_id(),l.getLocalisation_camping(),l.getDescription_camping(),l.getType_camping(),im));
+                if(l.getRating_camping()!=0)
+                siteslist.add(new camping(l.getId(),l.getFulloffre(),l.getLocalisation_camping(),l.getDescription_camping(),l.getType_camping(),im,l.getOffre_id_id(),Math.floor(l.getAverage_rating()/l.getRating_camping()*100)/100));
+                else
+                    siteslist.add(new camping(l.getId(),l.getFulloffre(),l.getLocalisation_camping(),l.getDescription_camping(),l.getType_camping(),im,l.getOffre_id_id(),0));
                 Tablesites.setItems(siteslist);
             }
         } catch (SQLException throwables) {

@@ -1,8 +1,3 @@
-#save
-{
-    -fx-background-color :linear-gradient(to top left, #00E676, #D4CEE3);
-    -fx-background-radius :  50px;
-}
 #save:hover
 {
     -fx-background-color :linear-gradient(to top left, #00E676, #D4CEE3);
@@ -11,11 +6,6 @@
 #save:pressed
 {
     -fx-background-color : #00E676 ;
-    -fx-background-radius :  50px;
-}
-#clean
-{
-    -fx-background-color :linear-gradient(to top left, #ff0000, #D4CEE3);
     -fx-background-radius :  50px;
 }
 #clean:hover
@@ -28,11 +18,6 @@
     -fx-background-color : #ff0000 ;
     -fx-background-radius :  50px;
 }
-#button
- {
-     -fx-background-color :linear-gradient(to top left, #1f8bff, #D4CEE3);
-     -fx-background-radius :  50px;
- }
 #button:hover
 {
     -fx-background-color :linear-gradient(to top left, #1f8bff, #D4CEE3);
@@ -43,18 +28,43 @@
     -fx-background-color :#1f8bff;
     -fx-background-radius :  50px;
 }
-#Dashboardbutton
-{
-    -fx-background-color :linear-gradient(to top left, #000000, #D4CEE3);
-    -fx-background-radius :  50px;
-}
 #Dashboardbutton:hover
 {
-    -fx-background-color :linear-gradient(to top left, #000000, #D4CEE3);
+    -fx-background-color :linear-gradient(to top left, #1f8bff, #D4CEE3);
     -fx-background-radius :  50px;
 }
 #Dashboardbutton:pressed
 {
-    -fx-background-color : #000000;
+    -fx-background-color :#1f8bff;
     -fx-background-radius :  50px;
+}
+#rate
+{
+    -fx-background-color :#FF9529;
+}
+#rate:hover
+{
+    -fx-background-color :linear-gradient(to top left, #FF9529, #D4CEE3);
+}
+#rate:pressed
+{
+    -fx-background-color : #FFDF00;
+}
+#qrcode{
+    -fx-font-family: "Arial";
+    -fx-text-fill: #ffffff;
+}
+#ratebutton_r{
+    -fx-background-color :#FF9529;
+    -fx-font-family: "Bauhaus 93";
+    -fx-text-fill: black;
+    -fx-font-size: 15px;
+}
+#ratebutton_r:hover
+{
+    -fx-background-color :linear-gradient(to top left, #FF9529, #D4CEE3);
+}
+#ratebutton_r:pressed
+{
+    -fx-background-color : #FFDF00;
 }

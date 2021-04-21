@@ -19,6 +19,13 @@ public class offre {
         this.prix = prix;
     }
 
+    public offre(int nombre_places, String date_debut, String date_fin, int prix) {
+        this.nombre_places = nombre_places;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.prix = prix;
+    }
+
     public int getId() {
         return id;
     }

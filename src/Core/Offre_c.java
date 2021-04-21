@@ -21,12 +21,12 @@ public class Offre_c implements CRUD<offre> {
 
     @Override
     public void Add(offre offre) throws SQLException {
-        PreparedStatement prepare=getConnexion().prepareStatement("insert into offre values (?,?,?,?,?)");
-        prepare.setInt(1,offre.getId());
-        prepare.setInt(2,offre.getNombre_places());
-        prepare.setString(3,offre.getDate_debut());
-        prepare.setString(4,offre.getDate_fin());
-        prepare.setInt(5,offre.getPrix());
+        PreparedStatement prepare=getConnexion().prepareStatement("insert into offre(nombre_places_offre,date_debut_offre,date_fin_offre,prix_offre) values (?,?,?,?)");
+//        prepare.setInt(1,offre.getId());
+        prepare.setInt(1,offre.getNombre_places());
+        prepare.setString(2,offre.getDate_debut());
+        prepare.setString(3,offre.getDate_fin());
+        prepare.setInt(4,offre.getPrix());
         prepare.executeUpdate();
     }
 

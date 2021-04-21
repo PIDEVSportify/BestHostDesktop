@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -15,11 +16,11 @@
         <HBox layoutX="26.0" layoutY="202.0" spacing="10.0" translateY="38.0" />
         <TableView fx:id="Tableoffers" layoutX="15.0" layoutY="98.0" prefHeight="264.0" prefWidth="531.0">
             <columns>
-                <TableColumn fx:id="IDColumn" prefWidth="78.2000150680542" style="-fx-font-size: 14px" text="ID" />
-                <TableColumn fx:id="NombredesplacesColumn" prefWidth="144.99999237060547" style="-fx-font-size: 14px" text="Nombre des places" />
-                <TableColumn fx:id="DatedébutColumn" prefWidth="114.20001220703125" style="-fx-font-size: 14px" text="Date début" />
-                <TableColumn fx:id="DatefinColumn" prefWidth="98.800048828125" style="-fx-font-size: 14px" text="Date fin" />
-                <TableColumn fx:id="PrixColumn" prefWidth="83.00003051757812" style="-fx-font-size: 14px" text="Prix" />
+                <TableColumn fx:id="IDColumn" minWidth="0.0" prefWidth="0.0" style="-fx-font-size: 14px" text="ID" />
+                <TableColumn fx:id="NombredesplacesColumn" prefWidth="148.4000244140625" style="-fx-font-size: 14px" text="Nombre des places" />
+                <TableColumn fx:id="DatedébutColumn" prefWidth="139.5999755859375" style="-fx-font-size: 14px" text="Date début" />
+                <TableColumn fx:id="DatefinColumn" prefWidth="137.20001220703125" style="-fx-font-size: 14px" text="Date fin" />
+                <TableColumn fx:id="PrixColumn" prefWidth="100.4000244140625" style="-fx-font-size: 14px" text="Prix" />
             </columns>
         </TableView>
         <Pane layoutY="59.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -28,26 +29,26 @@
                 <Font name="Bauhaus 93" size="32.0" />
             </font>
         </Text>
-          <Button fx:id="updateButton" layoutX="87.0" layoutY="377.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Update" textFill="WHITE">
+          <JFXButton fx:id="updateButton" focusTraversable="false" layoutX="87.0" layoutY="377.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Update">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
-         </font></Button>
-          <Button fx:id="deleteButton" layoutX="168.0" layoutY="377.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Delete" textFill="WHITE">
+         </font></JFXButton>
+          <JFXButton fx:id="deleteButton" focusTraversable="false" layoutX="168.0" layoutY="377.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Delete">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
-         </font></Button>
-          <Button fx:id="insertButton" layoutX="17.0" layoutY="377.0" mnemonicParsing="false" onAction="#AjouterOffer" prefHeight="30.0" prefWidth="60.0" text="Insert" textFill="WHITE">
+         </font></JFXButton>
+          <JFXButton fx:id="insertButton" focusTraversable="false" layoutX="17.0" layoutY="377.0" mnemonicParsing="false" onAction="#AjouterOffer" prefHeight="30.0" prefWidth="60.0" text="Insert">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
-         </font></Button>
-      <Button fx:id="refreshButton" layoutX="249.0" layoutY="377.0" mnemonicParsing="false" onAction="#ActualiserOffer" prefHeight="31.0" prefWidth="71.0" text="Refresh" textFill="WHITE">
+         </font></JFXButton>
+      <JFXButton fx:id="refreshButton" focusTraversable="false" layoutX="249.0" layoutY="377.0" mnemonicParsing="false" onAction="#ActualiserOffer" prefHeight="31.0" prefWidth="71.0" text="Refresh">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
-         </font></Button>
-      <Button fx:id="Dashboardbutton" layoutX="330.0" layoutY="377.0" mnemonicParsing="false" onAction="#Dushboardoffer" prefHeight="31.0" prefWidth="90.0" text="Dashboard" textFill="WHITE">
+         </font></JFXButton>
+      <JFXButton fx:id="Dashboardbutton" focusTraversable="false" layoutX="330.0" layoutY="377.0" mnemonicParsing="false" onAction="#Dushboardoffer" prefHeight="31.0" prefWidth="90.0" text="Dashboard">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
          </font>
-      </Button>
+      </JFXButton>
     </children>
 </AnchorPane>

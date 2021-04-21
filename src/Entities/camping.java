@@ -1,6 +1,9 @@
 package Entities;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import org.controlsfx.control.Rating;
 
 import java.util.Objects;
 
@@ -16,31 +19,33 @@ public class camping {
     private String longitude_camping;
     private String latitude_camping;
 
-    public camping(){}
-
-    public camping(String description_camping,int prix_offre_camping) {
-        this.description_camping = description_camping;
-        this.prix_offre_camping = prix_offre_camping;
-    }
-
     private Image image_site;
 
-    private int prix_offre_camping;
+    private double ratecamping;
 
-    public Image getImage_site() {
-        return image_site;
+    private String fulloffre;
+
+    private ImageView listview_image;
+
+    private JFXButton qrcode;
+
+    private org.controlsfx.control.Rating rating;
+
+    private JFXButton Add_rate;
+
+    public camping(){}
+
+    public camping(String description_camping,double ratecamping) {
+        this.description_camping = description_camping;
+        this.ratecamping = ratecamping;
     }
 
-    public void setImage_site(Image image_site) {
-        this.image_site = image_site;
-    }
-
-    public int getPrix_offre_camping() {
-        return this.prix_offre_camping;
-    }
-
-    public void setPrix_offre_camping(int prix_offre_camping) {
-        this.prix_offre_camping = prix_offre_camping;
+    public camping(int offre_id_id, String localisation_camping, String description_camping, String type_camping, String image_camping) {
+        this.offre_id_id = offre_id_id;
+        this.localisation_camping = localisation_camping;
+        this.description_camping = description_camping;
+        this.type_camping = type_camping;
+        this.image_camping = image_camping;
     }
 
     public camping(int id, int offre_id_id, String localisation_camping, String description_camping, String type_camping, Image image_site) {
@@ -59,6 +64,44 @@ public class camping {
         this.description_camping = description_camping;
         this.type_camping = type_camping;
         this.image_camping = image_camping;
+    }
+
+    public camping(int id, int offre_id_id, String localisation_camping, String description_camping, String type_camping, String image_camping,int rating_camping,double average_rating,String longitude_camping,String latitude_camping) {
+        this.id = id;
+        this.offre_id_id = offre_id_id;
+        this.localisation_camping = localisation_camping;
+        this.description_camping = description_camping;
+        this.type_camping = type_camping;
+        this.image_camping = image_camping;
+        this.rating_camping=rating_camping;
+        this.average_rating=average_rating;
+        this.longitude_camping=longitude_camping;
+        this.latitude_camping=latitude_camping;
+    }
+
+    public camping(int id, String fulloffre, String localisation_camping, String description_camping, String type_camping, Image image_site, int offre_id_id,double ratecamping) {
+        this.id = id;
+        this.fulloffre = fulloffre;
+        this.localisation_camping = localisation_camping;
+        this.description_camping = description_camping;
+        this.type_camping = type_camping;
+        this.image_site = image_site;
+        this.offre_id_id = offre_id_id;
+        this.ratecamping=ratecamping;
+    }
+
+    public camping(int id, JFXButton qrcode, String localisation_camping, String description_camping, String type_camping, ImageView listview_image, int offre_id_id,int rating_camping,double average_rating,org.controlsfx.control.Rating rating,JFXButton add_rate) {
+        this.id = id;
+        this.qrcode = qrcode;
+        this.localisation_camping = localisation_camping;
+        this.description_camping = description_camping;
+        this.type_camping = type_camping;
+        this.listview_image = listview_image;
+        this.offre_id_id = offre_id_id;
+        this.rating_camping=rating_camping;
+        this.average_rating=average_rating;
+        this.rating=rating;
+        this.Add_rate=add_rate;
     }
 
     public int getId() {
@@ -81,9 +124,7 @@ public class camping {
         return localisation_camping;
     }
 
-    public void setLocalisation_camping(String localisation_camping) {
-        this.localisation_camping = localisation_camping;
-    }
+    public void setLocalisation_camping(String localisation_camping) { this.localisation_camping = localisation_camping; }
 
     public String getType_camping() {
         return type_camping;
@@ -101,9 +142,7 @@ public class camping {
         this.image_camping = image_camping;
     }
 
-    public int getRating_camping() {
-        return rating_camping;
-    }
+    public int getRating_camping() { return rating_camping; }
 
     public void setRating_camping(int rating_camping) {
         this.rating_camping = rating_camping;
@@ -113,9 +152,7 @@ public class camping {
         return average_rating;
     }
 
-    public void setAverage_rating(double average_rating) {
-        this.average_rating = average_rating;
-    }
+    public void setAverage_rating(double average_rating) { this.average_rating = average_rating; }
 
     public String getLongitude_camping() {
         return longitude_camping;
@@ -137,6 +174,38 @@ public class camping {
 
     public void setDescription_camping(String description_camping) { this.description_camping = description_camping; }
 
+    public String getFulloffre() { return fulloffre; }
+
+    public void setFulloffre(String fulloffre) { this.fulloffre = fulloffre; }
+
+    public Image getImage_site() {
+        return image_site;
+    }
+
+    public void setImage_site(Image image_site) {
+        this.image_site = image_site;
+    }
+
+    public ImageView getListview_image() { return listview_image; }
+
+    public Rating getRating() { return rating; }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
+    }
+
+    public JFXButton getAdd_rate() { return Add_rate; }
+
+    public void setAdd_rate(JFXButton add_rate) { Add_rate = add_rate; }
+
+    public JFXButton getQrcode() { return qrcode; }
+
+    public void setQrcode(JFXButton qrcode) { this.qrcode = qrcode; }
+
+    public double getRatecamping() { return ratecamping; }
+
+    public void setRatecamping(double ratecamping) { this.ratecamping = ratecamping; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -152,16 +221,11 @@ public class camping {
 
     @Override
     public String toString() {
-        return "camping{" +
-                "id=" + id +
-                ", offre_id_id=" + offre_id_id +
-                ", localisation_camping='" + localisation_camping + '\'' +
+        return "camping: " +
+                "localisation_camping='" + localisation_camping + '\'' +
+                ", description_camping='" + description_camping + '\'' +
                 ", type_camping='" + type_camping + '\'' +
-                ", image_camping='" + image_camping + '\'' +
-                ", rating_camping=" + rating_camping +
-                ", average_rating=" + average_rating +
-                ", longitude_camping='" + longitude_camping + '\'' +
-                ", latitude_camping='" + latitude_camping + '\'' +
-                '}';
+                ", image_camping='" + image_camping + '\'' +"."
+                ;
     }
 }

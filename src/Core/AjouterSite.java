@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -31,9 +32,9 @@ public class AjouterSite implements Initializable {
     @FXML
     public Text Title_site;
     @FXML
-    private TextField Id_camping;
+    private ComboBox<String> offre_camping;
     @FXML
-    private ComboBox<Object> offre_camping;
+    private ComboBox<Object> full_offre_camping;
     @FXML
     private TextField local_camping;
     @FXML
@@ -53,21 +54,9 @@ public class AjouterSite implements Initializable {
     @FXML
     private Image image;
 
-    private int check_id;
-
-    public int getCheck_id() {
-        return check_id;
-    }
-
-    public void setCheck_id(int check_id) {
-        this.check_id = check_id;
-    }
+    private int save_id;
 
     private boolean update_dynamically;
-
-    public void setId_camping(boolean b) {
-        this.Id_camping.setEditable(b);
-    }
 
     public boolean isUpdate_dynamically() {
         return update_dynamically;
@@ -82,37 +71,28 @@ public class AjouterSite implements Initializable {
     }
 
     ObservableList<Object> siteslist= FXCollections.observableArrayList();
+    ObservableList<String> full_siteslist= FXCollections.observableArrayList();
 
     public void savecamping(ActionEvent actionEvent) throws SQLException {
-        boolean check=false;
-        Object offercamping =  offre_camping.getSelectionModel().getSelectedItem();
-        if(this.Id_camping.getText().matches("\\d+") && !this.local_camping.getText().isEmpty() && !this.desc_camping.getText().isEmpty()
-                && !this.ty_camping.getText().isEmpty() && !isEmpty(this.im_camping)) {
-            setCheck_id(Integer.parseInt(this.Id_camping.getText()));
+        Object offercamping =  full_offre_camping.getSelectionModel().getSelectedItem();
+        if(!this.local_camping.getText().isEmpty() && !this.desc_camping.getText().isEmpty() && !this.ty_camping.getText().isEmpty() && !isEmpty(this.im_camping)) {
             Camping_c c = new Camping_c();
             Nooffer no = new Nooffer();
             camping camping;
-            Predicate<camping> p1 = o -> o.getId() == getCheck_id();
-            if (c.result().stream().anyMatch(p1))
-                check = true;
-            if (isUpdate_dynamically())
-                check = false;
-            if (!check) {
                 if (isUpdate_dynamically()) {
                     if(offercamping.equals(no.no))
-                    camping = new camping(Integer.parseInt(this.Id_camping.getText()), 0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.image.getUrl());
+                    camping = new camping(this.save_id, 0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.image.getUrl());
                     else
-                        camping = new camping(Integer.parseInt(this.Id_camping.getText()), ((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.image.getUrl());
+                        camping = new camping(this.save_id, ((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.image.getUrl());
                     c.Update(camping);
                 }
                 else {
                     if (offercamping.equals(no.no))
-                        camping = new camping(Integer.parseInt(this.Id_camping.getText()), 0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getAbsoluteFile().toURI().toString());
+                        camping = new camping(0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getAbsoluteFile().toURI().toString());
                     else
-                        camping = new camping(Integer.parseInt(this.Id_camping.getText()), ((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getAbsoluteFile().toURI().toString());
+                        camping = new camping(((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getAbsoluteFile().toURI().toString());
                     c.Add(camping);
                 }
-                setCheck_id(0);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText("Success");
                 if(isUpdate_dynamically())
@@ -121,13 +101,6 @@ public class AjouterSite implements Initializable {
                     alert.setContentText("You have successfully added a new offer.");
                 alert.showAndWait();
 
-            } else {
-                setCheck_id(0);
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("You enter an ID that already exists.");
-                alert.showAndWait();
-            }
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
@@ -138,25 +111,33 @@ public class AjouterSite implements Initializable {
 
     public void cleancamping(ActionEvent actionEvent) {
         if(!isUpdate_dynamically())
-        Id_camping.clear();
-        local_camping.clear();
-        desc_camping.clear();
-        ty_camping.clear();
-        im_camping.setImage(null);
+            this.save_id=0;
+        this.local_camping.clear();
+        this.desc_camping.clear();
+        this.ty_camping.clear();
+        this.im_camping.setImage(null);
+        this.full_offre_camping.getSelectionModel().selectFirst();
         this.offre_camping.getSelectionModel().selectFirst();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        camping c1=new camping();
         Nooffer o = new Nooffer();
-        siteslist.add(0,o.no);
-        this.offre_camping.setItems(siteslist);
+        this.full_siteslist.add(0,"No offre");
+        this.offre_camping.setItems(this.full_siteslist);
         this.offre_camping.getSelectionModel().selectFirst();
+        this.siteslist.add(0,o.no);
+        this.full_offre_camping.setItems(this.siteslist);
+        this.full_offre_camping.getSelectionModel().selectFirst();
         Offre_c c = new Offre_c();
         try {
             for(offre l:c.result()) {
-                siteslist.add(new offre(l.getId(),l.getNombre_places(),l.getDate_debut(),l.getDate_fin(),l.getPrix()));
-                this.offre_camping.setItems(siteslist);
+                c1.setFulloffre("Nombre des places: "+l.getNombre_places()+"\n"+"Date début: "+l.getDate_debut()+"\n"+"Date fin: "+l.getDate_fin()+"\n"+"Prix: "+l.getPrix());
+                this.siteslist.add(new offre(l.getId(),l.getNombre_places(),l.getDate_debut(),l.getDate_fin(),l.getPrix()));
+                this.full_siteslist.add(c1.getFulloffre());
+                this.full_offre_camping.setItems(this.siteslist);
+                this.offre_camping.setItems(this.full_siteslist);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -187,11 +168,14 @@ public class AjouterSite implements Initializable {
                 if (l.getId() == b)
                     offre = new offre(l.getId(), l.getNombre_places(), l.getDate_debut(), l.getDate_fin(), l.getPrix());
             }
-            this.offre_camping.getSelectionModel().select(offre);
+            this.full_offre_camping.getSelectionModel().select(offre);
+            this.offre_camping.getSelectionModel().select(this.full_offre_camping.getSelectionModel().getSelectedIndex());
         }
-        else
+        else{
+            this.full_offre_camping.getSelectionModel().select(b);
             this.offre_camping.getSelectionModel().select(b);
-        this.Id_camping.setText(String.valueOf(a));
+        }
+        this.save_id=a;
         this.local_camping.setText(String.valueOf(c));
         this.desc_camping.setText(String.valueOf(d));
         this.ty_camping.setText(String.valueOf(e));
@@ -199,4 +183,11 @@ public class AjouterSite implements Initializable {
         this.im_camping.setImage(image);
         this.im_camping.setPreserveRatio(true);
     }
+
+    public void Mouseclique(ActionEvent actionEvent) {
+        this.full_offre_camping.getSelectionModel().select(this.offre_camping.getSelectionModel().getSelectedIndex());
+    }
+
+
+
 }
