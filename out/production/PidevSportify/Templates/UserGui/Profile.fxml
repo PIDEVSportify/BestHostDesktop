@@ -41,7 +41,7 @@
                <children>
                   <TabPane layoutX="2.0" layoutY="5.0" prefHeight="312.0" prefWidth="807.0" styleClass="profile_tab" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                      <Tab text="Paramètres">
+                      <Tab fx:id="tab_parameters" style="-fx-background-color: #8670B3; -fx-text-base-color: white;" text="Paramètres">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -74,7 +74,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="Sécurité">
+                      <Tab fx:id="tab_security" style="-fx-background-color: #8670B3; -fx-text-base-color: white;" text="Sécurité">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -88,7 +88,7 @@
                                           <Font size="13.0" />
                                        </font>
                                     </PasswordField>
-                                    <Label fx:id="lbl_error_password" contentDisplay="CENTER" layoutX="214.0" layoutY="33.0" minWidth="380.0" textFill="RED">
+                                    <Label fx:id="lbl_error_password" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="33.0" minWidth="380.0" textFill="RED">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
@@ -101,7 +101,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="Avatar">
+                        <Tab fx:id="tab_avatar" style="-fx-background-color: #8670B3; -fx-text-base-color: white;" text="Avatar">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>

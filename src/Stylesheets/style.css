@@ -28,4 +28,12 @@
 .profile_tab {
 -fx-border-width: 0px 1px 0px 1px;
  -fx-border-color :  grey;
+
+}
+
+.purple_box {
+-fx-border-width : 0px 0px 1px 0px;
+-fx-border-color: #7866B9;
+-fx-background-color: transparent;
+
 }

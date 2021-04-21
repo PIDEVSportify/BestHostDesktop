@@ -43,6 +43,7 @@ public class ChartsController  implements Initializable {
         this.pane.getChildren().add(lineChart);
 
 
+
     }
 
     public void goBack()

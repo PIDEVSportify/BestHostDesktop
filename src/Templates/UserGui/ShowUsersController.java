@@ -3,6 +3,8 @@ package Templates.UserGui;
 import Entities.User;
 import Services.SceneLoader;
 import Services.UserServices;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,11 +12,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class ShowUsersController implements Initializable {
 
@@ -32,6 +34,8 @@ public class ShowUsersController implements Initializable {
     public TableColumn cin_column;
     public HBox action_buttons;
     public HBox lnk_dashboard_home;
+    public TextField txt_search_box;
+
     @FXML
     private TableView<User> tableView;
 
@@ -92,12 +96,30 @@ public class ShowUsersController implements Initializable {
              btn_ban.setTextFill(Color.WHITE);
              btn_ban.setOnAction(this::btn_banAction);
              btn_ban.getStyleClass().add("btn_login");
-             this.loadUsers();
-            Stage stage = (Stage) this.btn_ban.getScene().getWindow();
 
+
+             this.loadUsers();
+
+
+            FilteredList<User> filteredData = new FilteredList<>(this.tableView.getItems());
+        SortedList <User> sortableData = new SortedList<>(filteredData);
+        sortableData.comparatorProperty().bind(this.tableView.comparatorProperty());
+            this.txt_search_box.textProperty().addListener((observable, oldValue, newValue) ->
+                    filteredData.setPredicate(createPredicate(newValue))
+            );
+
+            this.tableView.setItems(sortableData);
 
 
     }
+
+    private Predicate<User> createPredicate(String searchText){
+        return user -> {
+            if (searchText == null || searchText.isEmpty()) return true;
+            return searchTable(user, searchText);
+        };
+    }
+
 
     public void loadUsers()
     {
@@ -200,6 +222,7 @@ public class ShowUsersController implements Initializable {
     {
         SceneLoader.loadScene("UserGui/ShowUsers.fxml",this.lnk_show_users);
 
+
     }
 
 
@@ -213,6 +236,17 @@ public class ShowUsersController implements Initializable {
         SceneLoader.loadScene("AdminGui/Dashboard.fxml",this.lnk_dashboard_home);
     }
 
+
+        private boolean searchTable(User user, String searchText){
+
+            if (user.getCin()!=null )
+            {
+               return  user.getCin().toLowerCase().contains(searchText.trim().toLowerCase());
+            };
+        return (user.getEmail().trim().toLowerCase().contains(searchText.toLowerCase())) ||
+                (user.getFirst_name().concat(user.getLast_name()).replaceAll("\\s+","").toLowerCase().contains(searchText.replaceAll("\\s+","").toLowerCase()));
+
+    }
 
 
 }

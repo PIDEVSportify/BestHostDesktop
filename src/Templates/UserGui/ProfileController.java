@@ -43,6 +43,9 @@ public class ProfileController  implements Initializable {
     public Hyperlink lnk_confirm_avatar_update;
     public Label lbl_error_avatar;
     public HBox lnk_dashboard_home;
+    public Tab tab_parameters;
+    public Tab tab_security;
+    public Tab tab_avatar;
 
     private File file=null;
 
@@ -65,6 +68,7 @@ public class ProfileController  implements Initializable {
 
         this.lnk_confirm_avatar_update.setVisible(false);
         this.lnk_modify_avatar.setVisible(true);
+
 
 
 
@@ -109,14 +113,14 @@ public class ProfileController  implements Initializable {
             this.lbl_error_password.setText("Mot de passe doit au minimum contenir 8 caractères");
             this.lbl_error_password.setTextFill(Color.RED);
             valid=false;
-            this.txt_password.setStyle("-fx-border-color:red");
+
         }
         else if (this.txt_password.getText().compareTo(this.txt_confirm_password.getText())!=0)
         {
             this.lbl_error_password.setText("Veuillez taper le même mot de passe");
             this.lbl_error_password.setTextFill(Color.RED);
             this.txt_confirm_password.setStyle("-fx-border-color:red");
-            this.lbl_error_password.setStyle("-fx-border-color:#44F219");
+            this.lbl_error_password.setTextFill(Color.RED);
             valid=false;
         }
         return valid;
