@@ -1,7 +1,9 @@
 package Templates.AdminGui;
 
 import Services.SceneLoader;
+import Services.UserServices;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
@@ -16,10 +18,21 @@ public class DashboardController implements Initializable {
     public HBox lnk_show_users;
     public HBox lnk_show_stats;
     public HBox lnk_show_home;
+    public Label lbl_nmb_admins;
+    public Label lbl_nmb_gerant_camping;
+    public Label lbl_gerant_maison;
+    public Label lbl_gerant_activité;
+    public static String email=null;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        UserServices us = new UserServices();
+        this.lbl_nmb_admins.setText(us.getAdminsCount().toString());
+        this.lbl_gerant_activité.setText(us.getGerantSecteurActivite().toString());
+        this.lbl_nmb_gerant_camping.setText(us.getGerantSiteCampingCount().toString());
+        this.lbl_gerant_maison.setText(us.getGerantsMaisonHotesCount().toString());
 
     }
 
@@ -42,6 +55,10 @@ public class DashboardController implements Initializable {
     }
 
 
+    public  void setEmail(String email)
+    {
+        this.email=email;
+    }
 
 
 

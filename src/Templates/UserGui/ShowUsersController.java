@@ -10,10 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -102,7 +102,7 @@ public class ShowUsersController implements Initializable {
 
 
             FilteredList<User> filteredData = new FilteredList<>(this.tableView.getItems());
-        SortedList <User> sortableData = new SortedList<>(filteredData);
+        SortedList<User> sortableData = new SortedList<>(filteredData);
         sortableData.comparatorProperty().bind(this.tableView.comparatorProperty());
             this.txt_search_box.textProperty().addListener((observable, oldValue, newValue) ->
                     filteredData.setPredicate(createPredicate(newValue))

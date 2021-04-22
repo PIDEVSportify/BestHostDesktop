@@ -4,6 +4,7 @@ import Entities.User;
 import Services.LoginServices;
 import Services.SceneLoader;
 import Services.SmsServices;
+import Templates.AdminGui.DashboardController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -56,7 +57,8 @@ public class LoginController implements Initializable {
                     this.lbl_error.setText("Compte Bannis ! Connexion impossible ");
 
                 } else {
-
+                    DashboardController dc= new DashboardController();
+                    dc.setEmail(this.txt_email.getText());
                     SceneLoader.loadScene("AdminGui/Dashboard.fxml", this.txt_password);
                 }
             } else {

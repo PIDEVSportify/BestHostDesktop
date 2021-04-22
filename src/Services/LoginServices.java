@@ -109,7 +109,7 @@ public class LoginServices {
                     stm.executeUpdate();
                 }
                 else {
-                    sql = "insert into  recovery_tokens (token,created_at_expires_at,user_id) values (?,?,?,?)";
+                    sql = "insert into  recovery_tokens (token,created_at,expires_at,user_id) values (?,?,?,?)";
                     stm=this.conn.prepareStatement(sql);
                     stm.setString(1,token.getToken());
                     stm.setTimestamp(2,token.getCreated_at());

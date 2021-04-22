@@ -13,6 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ResourceBundle;
 
 public class ResetPasswordController implements Initializable {
@@ -90,11 +92,11 @@ public class ResetPasswordController implements Initializable {
                 this.lbl_info.setText("Token incorrect ou a expiré");
                 this.lbl_info.setTextFill(Color.RED);
             }
-//            else if (token.getExpires_at().compareTo(new Timestamp(System.currentTimeMillis()))>0)
-//            {
-//                this.lbl_info.setText("Token a expiré");
-//                this.lbl_info.setTextFill(Color.RED);
-//            }
+            else if (token.getExpires_at().compareTo(Timestamp.from(Instant.now()))<0)
+            {
+                this.lbl_info.setText("Token a expiré");
+                this.lbl_info.setTextFill(Color.RED);
+            }
             else if (token.getToken().equals(this.txt_token.getText()))
             {
 

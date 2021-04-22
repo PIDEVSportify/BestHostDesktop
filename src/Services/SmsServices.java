@@ -6,7 +6,7 @@ import com.twilio.type.PhoneNumber;
 
 public class SmsServices {
     private static final String   SID="AC073729f320dbc1e61c7d6453752b8d18";
-    private static  final String TOKEN = "f671da52671a44f5a583f4aa6f6b9d08"  ;
+    private static  final String TOKEN = "48a3f762b04248a6c04496a0d807822b"  ;
     private  static final String PHONE_NUMBER = "+12242573875";
 
        public static void sendSMS(String phone_number)

@@ -74,9 +74,8 @@ public class UserServices {
             throwables.printStackTrace();
         }
 
-
+        System.out.println("loading table");
         return usersList;
-
 
     }
 
@@ -226,6 +225,74 @@ public class UserServices {
 
         return series;
 
+    }
+
+
+    public Integer getAdminsCount()
+    {
+        this.conn = MyConnection.getInstance().getConn();
+        Integer count=0;
+        String sql="SELECT count(*) from user WHERE JSON_CONTAINS(roles, '[\"ROLE_ADMIN\"]') ";
+        try {
+            stm= this.conn.prepareStatement(sql);
+             ResultSet rs=stm.executeQuery();
+             rs.next();
+             count=rs.getInt(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return count;
+    }
+
+
+    public Integer getGerantsMaisonHotesCount()
+    {
+        this.conn = MyConnection.getInstance().getConn();
+        Integer count=0;
+        String sql="SELECT count(*) from user WHERE JSON_CONTAINS(roles, '[\"ROLE_GERANT_MAISON_HOTE\"]') ";
+        try {
+            stm= this.conn.prepareStatement(sql);
+            ResultSet rs=stm.executeQuery();
+            rs.next();
+            count=rs.getInt(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return count;
+    }
+    public Integer getGerantSiteCampingCount()
+    {
+        this.conn = MyConnection.getInstance().getConn();
+        Integer count=0;
+        String sql="SELECT count(*) from user WHERE JSON_CONTAINS(roles, '[\"ROLE_GERANT_CAMPING\"]') ";
+        try {
+            stm= this.conn.prepareStatement(sql);
+            ResultSet rs=stm.executeQuery();
+            rs.next();
+            count=rs.getInt(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return count;
+    }
+    public Integer getGerantSecteurActivite()
+    {
+        this.conn = MyConnection.getInstance().getConn();
+        Integer count=0;
+        String sql="SELECT count(*) from user WHERE JSON_CONTAINS(roles, '[\"ROLE_GERANT_SECTEUR_ACTIVITE\"]') ";
+        try {
+            stm= this.conn.prepareStatement(sql);
+            ResultSet rs=stm.executeQuery();
+            rs.next();
+            count=rs.getInt(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return count;
     }
 
 
