@@ -71,6 +71,11 @@ public class LoginController implements Initializable {
         SceneLoader.loadScene("UserGui/AddUser.fxml",this.btn_login);
     }
 
+    public void resetPassword()
+    {
+        SceneLoader.loadScene("LoginGui/ResetPassword.fxml",this.btn_login);
+    }
+
 
     public void facebookLogin() {
 
@@ -100,5 +105,8 @@ public class LoginController implements Initializable {
     {
         SmsServices.sendSMS("26701278");
     }
+
+
+
 
 }

@@ -1,6 +1,7 @@
 package Services;
 
 import Config.MyConnection;
+import Entities.Token;
 import Entities.User;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
@@ -57,6 +58,103 @@ public class LoginServices {
     {
         return BCrypt.checkpw(password,hashedPassword);
     }
+
+
+    public boolean validEmail(String email)
+    {
+        this.conn = MyConnection.getInstance().getConn();
+        String sql =" select * from user where email=?";
+        try
+        {
+            stm=conn.prepareStatement(sql);
+            stm.setString(1,email);
+            ResultSet rs = stm.executeQuery();
+
+            if (rs.next()==true)
+            {
+                return true ;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+            return false;
+    }
+
+    public void updateToken(String email, Token token)
+    {
+            this.conn=MyConnection.getInstance().getConn();
+
+            String sql = "select id from user where email= ?";
+        try {
+            stm=this.conn.prepareStatement(sql);
+            stm.setString(1,email);
+            ResultSet rs = stm.executeQuery();
+
+            if (rs.next())
+            {
+                int user_id = rs.getInt(1);
+                 sql = "select count(*) from recovery_tokens where user_id = ? ";
+                stm=this.conn.prepareStatement(sql);
+                stm.setInt(1,user_id);
+                rs=stm.executeQuery();
+                rs.next();
+                if (rs.getInt(1)!=0)
+                {
+                    sql = "update recovery_tokens set token =? , created_at=? ,expires_at =? where user_id=?";
+                    stm=this.conn.prepareStatement(sql);
+                    stm.setString(1,token.getToken());
+                    stm.setTimestamp(2,token.getCreated_at());
+                    stm.setTimestamp(3,token.getExpires_at());
+                    stm.setInt(4,user_id);
+                    stm.executeUpdate();
+                }
+                else {
+                    sql = "insert into  recovery_tokens (token,created_at_expires_at,user_id) values (?,?,?,?)";
+                    stm=this.conn.prepareStatement(sql);
+                    stm.setString(1,token.getToken());
+                    stm.setTimestamp(2,token.getCreated_at());
+                    stm.setTimestamp(3,token.getExpires_at());
+                    stm.setInt(4,user_id);
+                    stm.executeUpdate();
+                }
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+    }
+
+
+
+    public Token fetchToken(String email)
+    {
+        this.conn=MyConnection.getInstance().getConn();
+        String sql ="select token,expires_at from recovery_tokens where user_id = ( select id from user where email = ? ) ";
+        try {
+            stm=this.conn.prepareStatement(sql);
+            stm.setString(1,email);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next())
+            {
+                Token token = new Token();
+                token.setToken(rs.getString("token"));
+                token.setExpires_at(rs.getTimestamp("expires_at"));
+                return token;
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+            return null;
+    }
+
+
+
+
+
 
 
 }

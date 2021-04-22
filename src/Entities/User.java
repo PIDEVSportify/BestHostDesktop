@@ -73,7 +73,7 @@ public class User
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = LoginServices.passwordEncoder(password);
     }
 
     public int getId() {

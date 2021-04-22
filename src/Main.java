@@ -18,8 +18,8 @@ public class Main extends Application {
 
         Parent root = null;
         try {
-//         root = FXMLLoader.load(getClass().getResource("../LoginGui/Login.fxml"));
-            root = FXMLLoader.load(getClass().getResource("Templates/AdminGui/Dashboard.fxml"));
+         root = FXMLLoader.load(getClass().getResource("Templates/LoginGui/Login.fxml"));
+//            root = FXMLLoader.load(getClass().getResource("Templates/AdminGui/Dashboard.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
