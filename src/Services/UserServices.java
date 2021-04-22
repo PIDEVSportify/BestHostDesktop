@@ -20,12 +20,13 @@ public class UserServices {
 
     public UserServices()
     {
-        this.conn= MyConnection.getInstance().getConn();
+
     }
 
 
     public  void addUser(User user)
     {
+        this.conn= MyConnection.getInstance().getConn();
         String sql = "INSERT INTO user (first_name,last_name,email,password,is_banned,created_at,avatar,cin) VALUES (?,?,?,?,?,?,?,?)";
         try {
             stm= conn.prepareStatement(sql);
@@ -54,19 +55,17 @@ public class UserServices {
         try {
             ResultSet rs =conn.prepareStatement(sql).executeQuery();
 
-
             while (rs.next())
             {
              User u = new User();
              u.setFirst_name(rs.getString("first_name"));
              u.setLast_name(rs.getString("last_name"));
              u.setEmail(rs.getString("email"));
-             u.setPassword(rs.getString("password"));
              u.setIs_banned(rs.getInt("is_banned"));
              u.setAvatar(rs.getString("avatar"));
              u.setCin(rs.getString("cin"));
              u.setPic(u.getAvatar());
-
+                System.out.println("user fetched");
              usersList.add(u);
             }
 
@@ -74,7 +73,7 @@ public class UserServices {
             throwables.printStackTrace();
         }
 
-        System.out.println("loading table");
+        System.out.println("done fetching");
         return usersList;
 
     }
@@ -123,7 +122,7 @@ public class UserServices {
             stm.setString(1,user.getAvatar());
             stm.setString(2,user.getEmail());
             stm.executeUpdate();
-            System.out.println("User with email ="+ user.getEmail() +" Deleted Successfully ");
+            System.out.println("User modified updated Successfully ");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

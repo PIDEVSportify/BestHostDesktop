@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.ChartsGui.ChartsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.ChartsGui.ChartsController">
    <center>
       <HBox prefHeight="372.0" prefWidth="1020.0" BorderPane.alignment="CENTER">
          <children>
@@ -72,7 +72,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <ScrollPane layoutY="73.0" prefHeight="407.0" prefWidth="793.0">
+                  <ScrollPane layoutY="73.0" prefHeight="556.0" prefWidth="793.0">
                      <content>
                         <FlowPane fx:id="pane" prefHeight="638.0" prefWidth="947.0" />
                      </content>

@@ -30,6 +30,13 @@
  -fx-border-color :  grey;
 
 }
+.cross
+{
+ -fx-image: url("../icons/cross.png");
+ }
+.cross:hover{
+    -fx-image: url("../icons/cross_red.png");
+}
 
 .purple_box {
 -fx-border-width : 0px 0px 1px 0px;

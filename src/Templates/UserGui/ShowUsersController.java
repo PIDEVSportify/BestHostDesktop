@@ -97,7 +97,6 @@ public class ShowUsersController implements Initializable {
              btn_ban.setOnAction(this::btn_banAction);
              btn_ban.getStyleClass().add("btn_login");
 
-
              this.loadUsers();
 
 

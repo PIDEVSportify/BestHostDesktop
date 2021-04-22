@@ -3,6 +3,8 @@ package Templates.AdminGui;
 import Services.SceneLoader;
 import Services.UserServices;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -45,7 +47,14 @@ public class DashboardController implements Initializable {
 
     public void logout()
     {
-        SceneLoader.loadScene("loginGui/Login.fxml",this.img_logout);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Se Déconnecter ?");
+
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            SceneLoader.loadScene("loginGui/Login.fxml",this.img_logout);
+        }
     }
 
 
