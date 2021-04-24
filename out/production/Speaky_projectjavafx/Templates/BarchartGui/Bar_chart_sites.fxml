@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="383.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.BarchartGui.Barchartsites">
+    <stylesheets>
+        <URL value="@/Stylesheets/Ajouter_Offre_Site.css" />
+    </stylesheets>
+    <children>
+        <JFXButton fx:id="button" focusTraversable="false" layoutX="14.0" layoutY="14.0" onAction="#handleButtonAction" text="Generate">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></JFXButton>
+        <BarChart fx:id="barChart" animated="false" cache="true" categoryGap="30.0" layoutX="26.0" layoutY="68.0" legendVisible="false" prefHeight="292.0" prefWidth="552.0">
+            <xAxis>
+                <CategoryAxis fx:id="osaX" side="BOTTOM">
+               <tickLabelFont>
+                  <Font name="System Bold" size="10.0" />
+               </tickLabelFont></CategoryAxis>
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="osaY" side="LEFT">
+               <tickLabelFont>
+                  <Font name="System Bold" size="10.0" />
+               </tickLabelFont></NumberAxis>
+            </yAxis>
+        </BarChart>
+      <Label layoutX="5.0" layoutY="203.0" rotate="-90.0" text="Rate/5" />
+      <Label layoutX="209.0" layoutY="352.0" text="Description Site camping" />
+      <JFXButton fx:id="Dashboardbutton" focusTraversable="false" layoutX="102.0" layoutY="14.0" onAction="#Dashboardbar" text="Dashboard">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </JFXButton>
+    </children>
+</AnchorPane>
