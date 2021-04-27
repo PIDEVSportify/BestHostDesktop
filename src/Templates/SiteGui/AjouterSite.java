@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -81,18 +82,19 @@ public class AjouterSite implements Initializable {
             Camping_c c = new Camping_c();
             Nooffer no = new Nooffer();
             camping camping;
-                if (isUpdate_dynamically()) {
+            String _image=this.image.getUrl().substring(this.image.getUrl().lastIndexOf("uploads/")+8);
+            if (isUpdate_dynamically()) {
                     if(offercamping.equals(no.no))
-                    camping = new camping(this.save_id, 0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.image.getUrl());
+                    camping = new camping(this.save_id, 0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), _image);
                     else
-                        camping = new camping(this.save_id, ((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.image.getUrl());
+                        camping = new camping(this.save_id, ((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), _image);
                     c.Update(camping);
                 }
                 else {
                     if (offercamping.equals(no.no))
-                        camping = new camping(0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getAbsoluteFile().toURI().toString());
+                        camping = new camping(0, this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getName());
                     else
-                        camping = new camping(((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getAbsoluteFile().toURI().toString());
+                        camping = new camping(((offre) offercamping).getId(), this.local_camping.getText(), this.desc_camping.getText(), this.ty_camping.getText(), this.file.getName());
                     c.Add(camping);
                 }
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -146,10 +148,17 @@ public class AjouterSite implements Initializable {
         }
     }
 
-    public void uploadimage(ActionEvent actionEvent) {
+    public void uploadimage(ActionEvent actionEvent) throws IOException {
         final  FileChooser fileChooser=new FileChooser();
             this.file = fileChooser.showOpenDialog(null);
             if (file != null) {
+                Path from = Paths.get(this.file.toURI());
+                Path to = Paths.get("public/uploads/"+this.file.getName());
+                CopyOption[] options = new CopyOption[]{
+                        StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.COPY_ATTRIBUTES
+                };
+                Files.copy(from, to, options);
                 image = new Image(file.getAbsoluteFile().toURI().toString(), this.im_camping.getFitWidth(), this.im_camping.getFitHeight(), true, false);
                 this.im_camping.setImage(image);
                 this.im_camping.setPreserveRatio(true);
@@ -181,7 +190,7 @@ public class AjouterSite implements Initializable {
         this.local_camping.setText(String.valueOf(c));
         this.desc_camping.setText(String.valueOf(d));
         this.ty_camping.setText(String.valueOf(e));
-        image = new Image(f, this.im_camping.getFitWidth(), this.im_camping.getFitHeight(), true, true);
+        this.image = new Image(f, this.im_camping.getFitWidth(), this.im_camping.getFitHeight(), true, false);
         this.im_camping.setImage(image);
         this.im_camping.setPreserveRatio(true);
     }
@@ -189,7 +198,5 @@ public class AjouterSite implements Initializable {
     public void Mouseclique(ActionEvent actionEvent) {
         this.full_offre_camping.getSelectionModel().select(this.offre_camping.getSelectionModel().getSelectedIndex());
     }
-
-
 
 }

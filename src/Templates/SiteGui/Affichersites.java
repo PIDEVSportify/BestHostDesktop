@@ -166,7 +166,7 @@ public class Affichersites implements Initializable {
                 }
                 else
                     l.setFulloffre("Pas d'offre\npour le moment");
-                Image im = new Image(l.getImage_camping(), this.Imagecamping.getFitWidth(), this.Imagecamping.getFitHeight(), true, true);
+                Image im = new Image("file:public/uploads/"+l.getImage_camping(), this.Imagecamping.getFitWidth(), this.Imagecamping.getFitHeight(), true, true);
                 if(l.getRating_camping()!=0)
                 siteslist.add(new camping(l.getId(),l.getFulloffre(),l.getLocalisation_camping(),l.getDescription_camping(),l.getType_camping(),im,l.getOffre_id_id(),Math.floor(l.getAverage_rating()/l.getRating_camping()*100)/100));
                 else

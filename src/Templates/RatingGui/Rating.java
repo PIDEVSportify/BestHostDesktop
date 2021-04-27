@@ -97,7 +97,7 @@ public class Rating implements Initializable {
                     }
                 else
                     l.setFulloffre("Pas d'offre pour le moment");
-                Image im = new Image(l.getImage_camping(), 230, 346, true, true);
+                Image im = new Image("file:public/uploads/"+l.getImage_camping(), 230, 346, true, false);
                 JFXButton add_rate=new JFXButton("Rate");
                 add_rate.setId("ratebutton_r");
 

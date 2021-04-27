@@ -20,11 +20,13 @@ import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import org.controlsfx.control.WorldMapView;
 
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.nio.file.*;
 
 public class AfficherMap implements Initializable {
     @FXML
@@ -40,6 +42,14 @@ public class AfficherMap implements Initializable {
         ArrayList<String> tablot=new ArrayList<String>();
         String[] s = {""};
         String[] image = {""};
+        Path path;
+        String special=null;
+        try {
+            path = Paths.get(AfficherMap.class.getResource("../../").toURI());
+            special = path.getParent().getParent().getParent().toString().replaceAll("\\\\", "/");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         try {
             for(camping l:c.result()){
                 if(l.getOffre_id_id()!=0)
@@ -51,9 +61,8 @@ public class AfficherMap implements Initializable {
                     l.setFulloffre("Pas d'offre pour le moment");
                 tablat.add(l.getLatitude_camping());
                 tablot.add(l.getLongitude_camping());
-            s[0] +=("Localisation: "+l.getLocalisation_camping()+" Type: "+l.getType_camping()+" Description: "+l.getDescription_camping()+" Offre: "+l.getFulloffre()+"£");
-                image[0] +=(l.getImage_camping()+"£");
-
+                s[0] +=("Localisation: "+l.getLocalisation_camping()+" Type: "+l.getType_camping()+" Description: "+l.getDescription_camping()+" Offre: "+l.getFulloffre()+"£");
+                image[0] +=("file:"+special+"/public/uploads/"+l.getImage_camping()+"£");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

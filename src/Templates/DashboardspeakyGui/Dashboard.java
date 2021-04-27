@@ -98,7 +98,7 @@ public class Dashboard implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       this.imageselim = new Image("file:/C:/Users/speak/Downloads/20201230_174907.jpg");
+       this.imageselim = new Image("file:public/uploads/20201230_174907.jpg");
         this.imageviewselim.setImage(this.imageselim);
     }
 
@@ -109,7 +109,7 @@ public class Dashboard implements Initializable {
         Document document = new Document();
         try
         {
-            File f = new File("C:/Users/speak/Downloads/speaky.pdf");
+            File f = new File("public/uploads/speaky.pdf");
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(f));
             document.open();
             Paragraph p= new Paragraph("Data_sites_offers:",blueFont);
@@ -136,12 +136,14 @@ public class Dashboard implements Initializable {
             float[] columnWidths1 = {1f, 1f, 1f,1f, 1f,1f};
             table.setWidths(columnWidths1);
             for(camping lp:ca.result()) {
+                String imageUrl = "file:public/uploads/"+lp.getImage_camping();
+                com.itextpdf.text.Image image2 = com.itextpdf.text.Image.getInstance(new URL(imageUrl));
                 table.addCell(String.valueOf(lp.getId()));
                 table.addCell(String.valueOf(lp.getOffre_id_id()));
                 table.addCell(lp.getLocalisation_camping());
                 table.addCell(lp.getDescription_camping());
                 table.addCell(lp.getType_camping());
-                table.addCell(lp.getImage_camping());
+                table.addCell(image2);
             }
             document.add( Chunk.NEWLINE );
             document.add(table);
@@ -150,7 +152,7 @@ public class Dashboard implements Initializable {
             writer.close();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Success");
-            alert.setContentText("You have successfully added a new Pdf(sites,offers).\npath:C:/Users/speak/Downloads/speaky.pdf");
+            alert.setContentText("You have successfully added a new Pdf(sites,offers).\npath: public/uploads/speaky.pdf");
             alert.showAndWait();
         } catch (Exception e)
         {
