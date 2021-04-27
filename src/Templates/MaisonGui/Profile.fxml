@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="486.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.MaisonGui.ProfileController">
+   <children>
+      <Button fx:id="btn_go_back" layoutX="583.0" layoutY="67.0" mnemonicParsing="false" onAction="#goBack" prefHeight="24.0" prefWidth="95.0" styleClass="btn" text="Back" />
+      <Button fx:id="btn_update_parameters" layoutX="260.0" layoutY="402.0" mnemonicParsing="false" onAction="#updateGeneralSettings" prefHeight="24.0" prefWidth="253.0" styleClass="btn" text="Update data" />
+      <VBox layoutX="23.0" layoutY="14.0" prefHeight="444.0" prefWidth="182.0" spacing="15.0">
+         <children>
+            <Label text="Nouveau nom de la maison" />
+            <TextField fx:id="txt_nom" />
+            <Label layoutX="10.0" layoutY="10.0" text="Nouvelle Adresse" />
+            <TextField fx:id="txt_adress" layoutX="10.0" layoutY="26.0" />
+            <Label layoutX="10.0" layoutY="10.0" text="Nouvelle Description" />
+            <TextField fx:id="txt_description" layoutX="10.0" layoutY="26.0" />
+            <Label layoutX="10.0" layoutY="50.0" text="Nouveau Prix" />
+            <TextField fx:id="txt_prix" layoutX="10.0" layoutY="66.0" />
+            <Label layoutX="10.0" layoutY="90.0" text="Nombre de Chambres" />
+            <TextField fx:id="txt_chambre" layoutX="10.0" layoutY="106.0" />
+         </children>
+      </VBox>
+      <ImageView fx:id="img_avatar" fitHeight="150.0" fitWidth="200.0" layoutX="271.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

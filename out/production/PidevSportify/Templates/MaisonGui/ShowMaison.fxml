@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="436.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.MaisonGui.ShowMaisonController">
+   <children>
+      <TableView fx:id="tableView" layoutX="4.0" layoutY="142.0" prefHeight="286.0" prefWidth="786.0">
+        <columns>
+          <TableColumn fx:id="nom_col" prefWidth="75.0" text="Nom" />
+          <TableColumn fx:id="adresse_col" prefWidth="102.0" text="Adress" />
+            <TableColumn fx:id="description_col" prefWidth="106.0" text="Description" />
+            <TableColumn fx:id="prix_col" minWidth="0.0" prefWidth="91.0" text="Prix" />
+            <TableColumn fx:id="type_col" prefWidth="89.0" text="Type" />
+            <TableColumn fx:id="chambre_col" minWidth="0.0" prefWidth="124.0" text="Nombre de chambres" />
+            <TableColumn fx:id="image_col" prefWidth="197.0" text="Image" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txt_search_box" layoutX="104.0" layoutY="106.0" promptText="Search" style="-fx-border-color: #F25A0D;" />
+      <Pane prefHeight="86.0" prefWidth="796.0" style="-fx-background-color: #F25A0D;">
+         <children>
+            <Label layoutX="275.0" layoutY="14.0" text="Nos Maisons d'hotes" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <HBox layoutX="302.0" layoutY="95.0" spacing="30.0">
+         <children>
+            <Button fx:id="btn_add_redirect" mnemonicParsing="false" onAction="#redirect_to_add" prefHeight="24.0" prefWidth="61.0" styleClass="btn" text="Add" textFill="WHITE" />
+            <Button fx:id="btn_delete" mnemonicParsing="false" onAction="#deleteMaison" styleClass="btn" text="Delete" textFill="WHITE" />
+            <Button fx:id="btn_modify" mnemonicParsing="false" onAction="#ModifyMaison" styleClass="btn" text="change" textFill="WHITE" />
+            <Button fx:id="btn_reserver" mnemonicParsing="false" onAction="#ReserverMaison" styleClass="btn" text="Réserver" textFill="WHITE" />
+         </children>
+         <effect>
+            <Blend />
+         </effect>
+      </HBox>
+   </children>
+</AnchorPane>

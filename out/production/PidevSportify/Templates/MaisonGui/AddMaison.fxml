@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="574.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.MaisonGui.AddMaisonController">
+   <children>
+      <VBox layoutX="40.0" layoutY="39.0" prefHeight="369.0" prefWidth="130.0" spacing="15.0">
+         <children>
+            <Label text="Nom" />
+            <TextField fx:id="txt_nom" />
+            <Label layoutX="10.0" layoutY="10.0" text="Adress" />
+            <TextField fx:id="txt_adress" layoutX="10.0" layoutY="26.0" />
+            <Label layoutX="10.0" layoutY="50.0" text="Description" />
+            <TextField fx:id="txt_description" layoutX="10.0" layoutY="66.0" />
+            <Label layoutX="10.0" layoutY="90.0" text="Prix" />
+            <TextField fx:id="txt_prix" layoutX="10.0" layoutY="106.0" />
+            <Label layoutX="10.0" layoutY="130.0" text="Nb chambres" />
+            <TextField fx:id="txt_chambre" layoutX="10.0" layoutY="146.0" />
+            <Label prefHeight="16.0" prefWidth="75.0" text="Type" />
+            <ChoiceBox fx:id="txt_type" prefWidth="150.0" />
+         </children>
+      </VBox>
+      <Button fx:id="btn_Insert" layoutX="40.0" layoutY="483.0" mnemonicParsing="false" onAction="#AddMaison" styleClass="btn" text="Insert" />
+      <ImageView fx:id="img_avatar" fitHeight="150.0" fitWidth="200.0" layoutX="198.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btn_upload" layoutX="224.0" layoutY="218.0" mnemonicParsing="false" onAction="#selectAvatar" styleClass="btn" text="Upload" />
+      <Button fx:id="btn_back" layoutX="563.0" layoutY="471.0" mnemonicParsing="false" onAction="#backscreen" styleClass="btn" text="back" />
+   </children>
+</AnchorPane>
