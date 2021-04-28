@@ -28,16 +28,16 @@
       <VBox layoutX="399.0" layoutY="22.0" prefHeight="405.0" prefWidth="227.0" spacing="15.0">
          <children>
             <Label prefHeight="16.0" prefWidth="168.0" text="Nom du client" />
-            <TextField />
+            <TextField fx:id="txt_nom_client" />
             <Label layoutX="10.0" layoutY="10.0" text="Email du client" />
             <TextField fx:id="txt_email" />
             <Label layoutX="10.0" layoutY="50.0" text="Numero du client" />
-            <TextField layoutX="10.0" layoutY="66.0" />
+            <TextField fx:id="txt_numero" layoutX="10.0" layoutY="66.0" />
             <Label layoutX="10.0" layoutY="90.0" text="Date debut reservation" />
-            <DatePicker />
+            <DatePicker fx:id="txt_deb" />
             <Label layoutX="10.0" layoutY="130.0" text="Date fin reservation" />
-            <DatePicker />
-            <Button mnemonicParsing="false" onAction="#sendConfirmationMail" styleClass="btn" text="confirmer la reservation">
+            <DatePicker fx:id="txt_fin" />
+            <Button mnemonicParsing="false" onAction="#addReservation" styleClass="btn" text="confirmer la reservation">
                <VBox.margin>
                   <Insets left="15.0" />
                </VBox.margin>

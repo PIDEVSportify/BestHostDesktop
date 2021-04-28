@@ -1,15 +1,16 @@
 package Templates.MaisonGui;
 
 import Entities.Maison;
+import Entities.Reservation;
 import Entities.Token;
 import Entities.User;
-import Services.LoginServices;
-import Services.MailServices;
-import Services.MaisonService;
-import Services.SceneLoader;
+import Services.*;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,6 +49,18 @@ public class ReserverController implements Initializable {
     @FXML
     private Button btn_cancel;
 
+    @FXML
+    private TextField txt_nom_client;
+
+
+    @FXML
+    private TextField txt_numero;
+
+    @FXML
+    private DatePicker txt_deb;
+
+    @FXML
+    private DatePicker txt_fin;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -80,6 +93,32 @@ public class ReserverController implements Initializable {
     }
 
 
+
+    @FXML
+    void addReservation(ActionEvent event) {
+
+        String nom_c=txt_nom_client.getText();
+        String email=txt_email.getText();
+        String num = txt_numero.getText();
+        String date_deb= String.valueOf(txt_deb.getValue());
+        String date_fin= String.valueOf(txt_fin.getValue());
+
+        Reservation m = new Reservation(num,nom_c,email,date_deb,date_fin);
+        ReservationServices ms = new ReservationServices();
+
+        ms.Addreservation(m);
+        //MailServices.sendMail(m.getEmail());
+        // SmsServices.sendSMS(this.inscription_phone_number.getText());
+        // SceneLoader.loadScene("LoginGui/Login.fxml",this.btn_back);
+
+
+    sendConfirmationMail();
+
+    }
+
+
+
+
     public void sendConfirmationMail()
     {
 
@@ -95,7 +134,7 @@ public class ReserverController implements Initializable {
 
 
                 String title = "Reservation confirmer";
-                String body = "Votre reservation pour la maison d'hote :"+this.txt_nom.getText()+" est bien recu";
+                String body = "Votre reservation pour la maison d'hote :"+this.txt_nom.getText()+" pour la date du "+this.txt_deb+" au "+this.txt_fin+"  est bien recu";
                 MailServices.sendMail(email,title,body);
 
 
@@ -104,4 +143,7 @@ public class ReserverController implements Initializable {
         }
 
     }
+
+
+
 }

@@ -57,6 +57,10 @@ public class ShowMaisonController   implements Initializable {
     private Button btn_reserver;
 
     @FXML
+    private Button btn_show_reservations;
+
+
+    @FXML
     private Button btn_modify;
 
 
@@ -182,5 +186,17 @@ public class ShowMaisonController   implements Initializable {
     public void redirect_to_add(){
         SceneLoader.loadScene("MaisonGui/AddMaison.fxml",this.btn_add_redirect);
     }
+      public void MesReservations()
+    {
+
+
+
+            SceneLoader.loadScene("MaisonGui/ShowReservation.fxml",this.btn_show_reservations);
+
+    }
+
+
+
+
 
 }
