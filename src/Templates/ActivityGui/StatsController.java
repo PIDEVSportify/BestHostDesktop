@@ -32,7 +32,7 @@ import javafx.scene.control.Button;
  */
 public class StatsController implements Initializable {
      Connection cnx;
-    PreparedStatement ste;
+    PreparedStatement ste,stm;
     @FXML
     private Button showAct;
     public StatsController() {
@@ -55,25 +55,40 @@ public class StatsController implements Initializable {
     }   
     private void loadChart(){
         XYChart.Series<String,Integer> series = new XYChart.Series<>();
+        int i=0,j=0,k=0;
          try {
-             ste = cnx.prepareStatement("select count(categorie) from activity where categorie like 'Randonnée' ");
-             ResultSet rs = ste.executeQuery();
-             rs.next();
-      int count = rs.getInt(1);
+             ste = cnx.prepareStatement("select * from activity where categorie like 'Randonnée'");
+            ResultSet rs = ste.executeQuery();             
+             while(rs.next()){
+             stm = cnx.prepareStatement("select count(*) from act_like where post_id = '"+rs.getString("id_act")+"'");
+                 ResultSet rss = stm.executeQuery();
+                 rss.next();
+                i=i+rss.getInt(1);
+             }
              
-             series.getData().add(new XYChart.Data<>("Randonnée",count));
-             ste = cnx.prepareStatement("select count(categorie) from activity where categorie like 'PaintBall' ");
-             rs = ste.executeQuery();
-             rs.next();
-      int count1 = rs.getInt(1);
              
-             series.getData().add(new XYChart.Data<>("PaintBall",count1));
-             ste = cnx.prepareStatement("select count(categorie) from activity where categorie like 'Match foot' ");
-             rs = ste.executeQuery();
-             rs.next();
-      int count2 = rs.getInt(1);
+             ste = cnx.prepareStatement("select * from activity where categorie like 'PaintBall'");
+             rs = ste.executeQuery();             
+             while(rs.next()){
+             stm = cnx.prepareStatement("select count(*) from act_like where post_id = '"+rs.getString("id_act")+"'");
+                 ResultSet rss = stm.executeQuery();
+                 rss.next();
+                j=j+rss.getInt(1);
+             }
              
-             series.getData().add(new XYChart.Data<>("Match foot",count2));
+             series.getData().add(new XYChart.Data<>("Randonnée",i));
+             
+             series.getData().add(new XYChart.Data<>("PaintBall",j));
+             ste = cnx.prepareStatement("select * from activity where categorie like 'Match foot'");
+             rs = ste.executeQuery();             
+             while(rs.next()){
+             stm = cnx.prepareStatement("select count(*) from act_like where post_id = '"+rs.getString("id_act")+"'");
+                 ResultSet rss = stm.executeQuery();
+                 rss.next();
+                k=k+rss.getInt(1);
+             }
+             
+             series.getData().add(new XYChart.Data<>("Match foot",k));
 
              //while(rs.next()){
              //}

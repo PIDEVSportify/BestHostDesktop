@@ -19,14 +19,14 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
     public Hyperlink btn_sign_up;
     public Label lbl_password;
+    @FXML
+    private Hyperlink lnk_reset_password;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    @FXML
-    private Label lbl_email;
 
     @FXML
     private Label lbl_error;
@@ -41,6 +41,7 @@ public class LoginController implements Initializable {
     private Button btn_login;
 
 
+    @FXML
     public void login()
     {
         if (this.txt_email.getText().isBlank() || this.txt_password.getText().isBlank() )
@@ -68,11 +69,13 @@ public class LoginController implements Initializable {
 
     }
 
+    @FXML
     public void signUp()
     {
         SceneLoader.loadScene("UserGui/AddUser.fxml",this.btn_login);
     }
 
+    @FXML
     public void resetPassword()
     {
         SceneLoader.loadScene("LoginGui/ResetPassword.fxml",this.btn_login);

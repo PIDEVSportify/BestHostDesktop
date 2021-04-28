@@ -8,6 +8,7 @@ package Templates.Activitygui;
 import Config.MyConnection;
 import Entities.Activity;
 import Services.EntityService;
+import Services.SceneLoader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -33,6 +34,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import Templates.AdminGui.DashboardController;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.util.Duration;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -46,6 +54,16 @@ public class AjoutActivityController implements Initializable {
     private Button addActivity;
     @FXML
     private Button listact;
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+   LocalDate now = LocalDate.now(); 
+    @FXML
+    private HBox lnk_show_home;
+    @FXML
+    private HBox lnk_show_users;
+    @FXML
+    private HBox lnk_show_stats;
+    @FXML
+    private HBox lnk_show_activity;
             
 public AjoutActivityController() {
         cnx = MyConnection.current_connection.getConn();
@@ -81,7 +99,22 @@ public AjoutActivityController() {
 
     @FXML
     private void addActivity(ActionEvent event) {
-       try {
+        if(this.txtid.getText().isBlank() || this.txtdes.getText().isBlank() || this.txttype.getText().isBlank() || this.txtcat.getSelectionModel().isEmpty() || this.datp.getValue().isBefore(now) )
+        {
+        String title = "INVALID REQUEST";
+        String message = "Verify the fields";
+        
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.ERROR);
+        tray.showAndDismiss(Duration.seconds(4));
+        txtid.clear();
+        txtdes.clear();
+        txttype.clear();
+        }
+        else{
+            try {
             String id = txtid.getText();
             String type = txttype.getText();
             String categorie = (String) txtcat.getSelectionModel().getSelectedItem();
@@ -95,10 +128,18 @@ public AjoutActivityController() {
             Parent root = loader.load();
             AfficherActivityController apc = loader.getController();
             txtid.getScene().setRoot(root);
-
+        String title = "Activity added";
+        String message = "You've successfully added a new activity";
+        
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.seconds(4));
 
         } catch (IOException ex) {
                       System.out.println(ex.getMessage());
+        }
         }
     }
 
@@ -114,5 +155,36 @@ public AjoutActivityController() {
                         System.out.println(ex.getMessage());
          }
     }
+    @FXML
+    public void showUsers()
+    {
+        SceneLoader.loadScene("UserGui/ShowUsers.fxml",this.lnk_show_users);
+                System.out.print(email);
+
+
+    }
+
+
+
+    @FXML
+    public void showStats()
+    {
+        SceneLoader.loadScene("ChartsGui/Charts.fxml",this.lnk_show_stats);
+        System.out.print(email);
+    }
+
+
+
+    @FXML
+    private void showActivity(MouseEvent event) {
+                SceneLoader.loadScene("ActivityGui/AfficherActivity.fxml",this.lnk_show_activity);
+
+    }
+    
+    @FXML
+    public void showDashboard() {
+        SceneLoader.loadScene("AdminGui/Dashboard.fxml", this.lnk_show_home);
+    }
+
     
 }
