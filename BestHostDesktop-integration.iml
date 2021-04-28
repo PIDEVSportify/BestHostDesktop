@@ -36,9 +36,9 @@
     <orderEntry type="library" name="itextpdf-5.0.6" level="project" />
     <orderEntry type="library" name="controlsfx-11.1.0" level="project" />
     <orderEntry type="library" name="jfoenix-9.0.10" level="project" />
-    <orderEntry type="library" name="qrgen-1.4" level="project" />
     <orderEntry type="library" name="jquery-3.2.1" level="application" />
     <orderEntry type="library" name="javax.mail" level="project" />
     <orderEntry type="library" name="jakarta.activation-1.2.1" level="project" />
+    <orderEntry type="library" name="qrgen-1.4" level="project" />
   </component>
 </module>
