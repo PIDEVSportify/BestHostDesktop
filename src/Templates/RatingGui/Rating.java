@@ -58,6 +58,8 @@ public class Rating implements Initializable {
     public AnchorPane ecran;
     @FXML
     public JFXButton save;
+    @FXML
+    public JFXButton sendEmail;
 
     ObservableList<camping> campingObservableList= FXCollections.observableArrayList();
 
@@ -75,6 +77,22 @@ public class Rating implements Initializable {
             stage.setScene(new Scene(parent));
             stage.initStyle(StageStyle.UTILITY);
             stage.setTitle("Map");
+            stage.show();
+        });
+        this.sendEmail.setOnAction(e ->{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../MailGui/Envoyer_mail.fxml"));
+            try {
+                loader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(Rating.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(parent));
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Email");
             stage.show();
         });
         Actualiser();
