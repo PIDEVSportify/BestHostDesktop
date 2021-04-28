@@ -1,6 +1,6 @@
 package Services;
 
-import Config.Config;
+import Config.MyConnection;
 import Entities.offre;
 import Interfaces.CRUD;
 
@@ -12,7 +12,7 @@ public class Offre_c implements CRUD<offre> {
     private Connection connexion;
 
     public Connection getConnexion() throws SQLException {
-        return this.connexion=Config.getDBConnection();
+        return this.connexion= MyConnection.getInstance().getConn();
     }
     public Offre_c(){}
 

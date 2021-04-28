@@ -1,6 +1,6 @@
 package Services;
 
-import Config.Config;
+import Config.MyConnection;
 import Entities.camping;
 import Entities.offre;
 import Interfaces.CRUD;
@@ -15,7 +15,7 @@ public class Camping_c implements CRUD<camping> {
     private Connection connexion;
 
     public Connection getConnexion() throws SQLException {
-        return this.connexion= Config.getDBConnection();
+        return this.connexion= MyConnection.getInstance().getConn();
     }
     public Camping_c(){}
 

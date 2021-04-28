@@ -46,7 +46,7 @@ public class EnvoyerMail implements Initializable {
         properties.put("mail.smtp.port", "587");
 
         String myAccountEmail = "Speakyjavafx@gmail.com";
-        String password = "******";
+        String password = "Javafx123";
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
