@@ -38,7 +38,7 @@ public class DashboardController implements Initializable {
     public HBox lnk_show_speaky;
     public HBox lnk_show_reclamation;
     public HBox lnk_show_Feedback;
-
+    public HBox lnk_show_activity;
     public HBox lnk_show_maison_hote;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -120,5 +120,9 @@ public class DashboardController implements Initializable {
     }
     public void showMaison(){
         SceneLoader.loadScene("MaisonGui/ShowMaison.fxml",this.lnk_show_maison_hote);
+    }
+     public void showActivity() {
+                SceneLoader.loadScene("ActivityGui/AfficherActivity.fxml",this.lnk_show_activity);
+
     }
 }
