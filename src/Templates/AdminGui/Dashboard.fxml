@@ -79,6 +79,16 @@
                   </Label>
                </children>
             </HBox>
+            <HBox fx:id="lnk_show_activity" alignment="CENTER_LEFT" layoutY="403.0" onMouseClicked="#showActivity" prefHeight="39.0" prefWidth="229.0" styleClass="menu_item">
+               <children>
+                  <Label />
+                  <Label fx:id="lnk_show_activity" alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="145.0" text="Liste des Activités" textFill="WHITE" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
 
          </children>
       </AnchorPane>
