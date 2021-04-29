@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="488.0" prefWidth="788.0" style="-fx-background-color: #48BCB9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.ReclamationGui.ClientReclamationController">
+   <children>
+      <Text layoutX="78.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="find" wrappingWidth="109.6031494140625" />
+      <Text layoutX="78.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="objet" />
+      <Text layoutX="78.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sujet" />
+      <Text layoutX="331.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
+      <Text layoutX="331.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="etat" />
+      <Text layoutX="334.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user" />
+      <TextField fx:id="type" layoutX="125.0" layoutY="103.0" style="-fx-background-color: #9AEEEC;" />
+      <TextField fx:id="sujet" layoutX="127.0" layoutY="213.0" style="-fx-background-color: #9AEEEC;" />
+      <TextField fx:id="desc" layoutX="405.0" layoutY="79.0" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #9AEEEC;" />
+      <TextField fx:id="etat" layoutX="383.0" layoutY="155.0" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #9AEEEC;" />
+      <TextField fx:id="user" layoutX="378.0" layoutY="206.0" style="-fx-background-color: #9AEEEC;" />
+      <TextField fx:id="iddd" disable="true" layoutX="127.0" layoutY="62.0" style="-fx-background-color: #9AEEEC;" />
+      <TextField fx:id="prod1" disable="true" layoutX="375.0" layoutY="120.0" style="-fx-background-color: #9AEEEC;" />
+      <Text layoutX="330.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
+      <ComboBox fx:id="prod" layoutX="124.0" layoutY="156.0" prefWidth="150.0" promptText="les stades" />
+      <Button fx:id="ajout" layoutX="564.0" layoutY="111.0" mnemonicParsing="false" onAction="#AjoutReclamation" text="ajouter" />
+      <Button fx:id="btnu" layoutX="564.0" layoutY="168.0" mnemonicParsing="false" onAction="#Edit" text="modifier" />
+      <TableView fx:id="RECl" layoutX="118.0" layoutY="281.0" onMouseClicked="#getSelected" prefHeight="154.0" prefWidth="552.0">
+         <columns>
+            <TableColumn fx:id="dd" prefWidth="53.60002136230469" text="id" />
+            <TableColumn fx:id="tt" prefWidth="68.0" text="type" />
+            <TableColumn fx:id="oo" prefWidth="59.20001220703125" text="objet" />
+            <TableColumn fx:id="ss" prefWidth="58.39996337890625" text="sujet" />
+            <TableColumn fx:id="ds" prefWidth="96.79998779296875" text="description" />
+            <TableColumn fx:id="dt" prefWidth="62.400054931640625" text="date" />
+            <TableColumn fx:id="dtt" prefWidth="91.199951171875" text="etat" />
+            <TableColumn fx:id="usr" prefWidth="60.0" text="user" />
+         </columns>
+      </TableView>
+      <Button fx:id="supprimer" layoutX="334.0" layoutY="448.0" mnemonicParsing="false" onAction="#supprimerrc" text="supprimer" />
+      <Button fx:id="btnu2" layoutX="685.0" layoutY="448.0" mnemonicParsing="false" onAction="#Feedback" style="-fx-background-color: #9AEEEC;" text="feedback" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,44 @@
+.login_box {
+    -fx-border-color :  #7866B9;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-background-color : transparent;
+
+}
+
+.btn_login {
+    -fx-background-color: #7866B9;
+}
+
+.btn_login:hover{
+
+    -fx-background-color: #9D86F1;
+}
+
+.menu_item{
+-fx-background-color: #744EA8;
+}
+.menu_item:hover
+{
+-fx-background-color: #8670B3;
+}
+
+.profile_tab {
+-fx-border-width: 0px 1px 0px 1px;
+ -fx-border-color :  grey;
+
+}
+.cross
+{
+ -fx-image: url("../icons/cross.png");
+ }
+.cross:hover{
+    -fx-image: url("../icons/cross_red.png");
+}
+
+
+.purple_box {
+-fx-border-width : 0px 0px 1px 0px;
+-fx-border-color: #7866B9;
+-fx-background-color: transparent;
+
+}

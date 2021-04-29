@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ecran" prefHeight="513.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.RatingGui.Rating">
+   <stylesheets>
+      <URL value="@/Stylesheets/Ajouter_Offre_Site.css" />
+   </stylesheets>
+   <children>
+      <JFXListView fx:id="Listview" focusTraversable="false" prefHeight="477.0" prefWidth="795.0" />
+      <JFXButton fx:id="Dashboardbutton" focusTraversable="false" layoutX="12.0" layoutY="483.0" onAction="#backdashboard" text="Back">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="save" focusTraversable="false" layoutX="99.0" layoutY="483.0" text="Map">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="sendEmail" focusTraversable="false" layoutX="186.0" layoutY="483.0" text="Please send me all information">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

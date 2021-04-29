@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="506.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.ReclamationGui.MainController">
+   <children>
+      <AnchorPane layoutX="406.0" layoutY="6.0" prefHeight="512.0" prefWidth="366.0" style="-fx-background-color: #F2E38C;">
+         <children>
+            <Button fx:id="sendemailbutton" ellipsisString="" layoutX="139.0" layoutY="447.0" mnemonicParsing="false" onAction="#buttonclicked" text="envoyer" textFill="#e23f3f" textOverrun="LEADING_ELLIPSIS" />
+            <TextField fx:id="emailToField" layoutX="97.0" layoutY="145.0" promptText="xxxx@gmail.com" />
+            <AnchorPane layoutX="-406.0" layoutY="-6.0" prefHeight="80.0" prefWidth="805.0" style="-fx-background-color: #FEFE96;">
+               <effect>
+                  <Reflection />
+               </effect>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Label fx:id="sentboolValue1" layoutX="298.0" layoutY="144.0" text="to      :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="-2.0" prefHeight="519.0" prefWidth="128.0" style="-fx-background-color: #BAC68F;">
+         <effect>
+            <SepiaTone />
+         </effect>
+      </AnchorPane>
+      <Label fx:id="sentboolValue" layoutX="230.0" layoutY="438.0" prefHeight="37.0" prefWidth="149.0" text="message  sent   !!" textFill="#3003d2" visible="false">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

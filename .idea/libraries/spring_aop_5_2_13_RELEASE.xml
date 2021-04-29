@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="spring-aop-5.2.13.RELEASE">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/spring-aop-5.2.13.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-beans-5.2.13.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-context-5.2.13.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-core-5.2.13.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-expression-5.2.13.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-jcl-5.2.13.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-security-core-5.4.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-security-crypto-4.1.0.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-security-web-5.4.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/spring-web-5.2.13.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

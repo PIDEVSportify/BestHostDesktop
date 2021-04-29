@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.ReclamationGui.AjoutReclamationController">
+   <children>
+      <TextField fx:id="prod" layoutX="373.0" layoutY="65.0" />
+      <TextField fx:id="type" layoutX="373.0" layoutY="118.0" />
+      <TextField fx:id="sujet" layoutX="373.0" layoutY="175.0" />
+      <TextField fx:id="desc" layoutX="373.0" layoutY="230.0" />
+      <TextField fx:id="etat" layoutX="373.0" layoutY="288.0" />
+      <TextField fx:id="user" layoutX="373.0" layoutY="339.0" />
+      <Button fx:id="ajout" layoutX="265.0" layoutY="339.0" mnemonicParsing="false" onAction="#AjoutReclamation" text="ajouter" />
+      <Text layoutX="155.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type" wrappingWidth="109.6031494140625" />
+      <Text layoutX="155.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="objet" />
+      <Text layoutX="155.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sujet" />
+      <Text layoutX="140.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
+      <Text layoutX="158.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="etat" />
+      <Text layoutX="157.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user" />
+   </children>
+</AnchorPane>

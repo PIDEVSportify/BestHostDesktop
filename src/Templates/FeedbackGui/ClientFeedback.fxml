@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="656.0" style="-fx-background-color: #48BCB9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Templates.FeedbackGui.ClientFeedbackController">
+   <children>
+      <TextField fx:id="desc" layoutX="29.0" layoutY="98.0" prefHeight="85.0" prefWidth="176.0" style="-fx-background-color: #9AEEEC;" />
+      <TableView fx:id="RECl" layoutX="228.0" layoutY="125.0" prefHeight="200.0" prefWidth="372.0" style="-fx-background-color: #9AEEEC;">
+        <columns>
+          <TableColumn fx:id="dd" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="ds" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="rt" prefWidth="75.0" text="rate" />
+            <TableColumn fx:id="dt" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="usr" prefWidth="75.0" text="user" />
+        </columns>
+      </TableView>
+       <Rating fx:id="ratebutton" layoutX="31.0" layoutY="198.0" onMouseClicked="#detect" prefWidth="150.0" rating="0.0" translateY="27.0" />
+
+       <Button fx:id="ajout" layoutX="46.0" layoutY="276.0" mnemonicParsing="false" onAction="#AjoutFeedback" text="noter" />
+      <TextField fx:id="filterField" layoutX="390.0" layoutY="73.0" onKeyTyped="#recherche" style="-fx-background-color: #9AEEEC;" />
+      <Button fx:id="supprimer" layoutX="343.0" layoutY="341.0" mnemonicParsing="false" onAction="#supprimerrc" text="supprimer" textFill="#4c2929" />
+      <StackPane layoutX="19.0" layoutY="311.0" prefHeight="150.0" prefWidth="200.0" />
+      <Label layoutX="29.0" layoutY="77.0" text="Description" />
+      <Label layoutX="46.0" layoutY="200.0" text="Rating" />
+       <Button fx:id="btnu2" layoutX="108.0" layoutY="274.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="61.0" style="-fx-background-color: #9AEEEC;" text="back" />
+
+   </children>
+</AnchorPane>

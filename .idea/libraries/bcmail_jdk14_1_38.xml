@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="bcmail-jdk14-1.38">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/JavaiTextPDFExamples/lib/bcmail-jdk14-1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/JavaiTextPDFExamples/lib/bcprov-jdk14-1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/JavaiTextPDFExamples/lib/bctsp-jdk14-1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/JavaiTextPDFExamples/lib/itextpdf-5.0.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
