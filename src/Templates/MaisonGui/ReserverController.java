@@ -134,7 +134,7 @@ public class ReserverController implements Initializable {
 
 
                 String title = "Reservation confirmer";
-                String body = "Votre reservation pour la maison d'hote :"+this.txt_nom.getText()+" pour la date du "+this.txt_deb+" au "+this.txt_fin+"  est bien recu";
+                String body = "Votre reservation pour la maison d'hote :"+this.txt_nom.getText()+" pour la date du "+this.txt_deb.getValue()+" au "+this.txt_fin.getValue()+"  est bien recu";
                 MailServices.sendMail(email,title,body);
 
 

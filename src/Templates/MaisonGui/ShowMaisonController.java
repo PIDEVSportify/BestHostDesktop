@@ -25,10 +25,12 @@ public class ShowMaisonController   implements Initializable {
     public TableColumn image_col;
     @FXML
     private TableView<Maison> tableView;
-
+    @FXML
+    private Button btn_back_dash;
     @FXML
     private TableColumn<Maison, String> nom_col;
-
+    @FXML
+    private Button btn_test;
     @FXML
     private TableColumn<Maison, String> adresse_col;
 
@@ -63,7 +65,7 @@ public class ShowMaisonController   implements Initializable {
     @FXML
     private Button btn_modify;
 
-
+    private  static User user;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -102,7 +104,7 @@ public class ShowMaisonController   implements Initializable {
         );
 
         this.tableView.setItems(sortableData);
-
+        control();
 
     }
 
@@ -195,6 +197,34 @@ public class ShowMaisonController   implements Initializable {
 
     }
 
+
+
+
+
+    public void control (){
+      UserServices us = new UserServices();
+
+
+    String role = us.GetRole();
+            String MaisonHote = "["+"\"ROLE_GERANT_MAISON_HOTE"+"\"]";
+          System.out.println(role);
+          System.out.println(MaisonHote);
+
+          if (role.equals(MaisonHote))
+          {
+
+              btn_reserver.setVisible(false);
+          }else  {
+              btn_modify.setVisible(false);
+              btn_delete.setVisible(false);
+              btn_add_redirect.setVisible(false);
+          }
+
+
+    }
+    public void redirect_to_dash(){
+        SceneLoader.loadScene("AdminGui/Dashboard.fxml",this.btn_back_dash);
+    }
 
 
 

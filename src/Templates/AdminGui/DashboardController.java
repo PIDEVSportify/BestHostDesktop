@@ -24,6 +24,10 @@ public class DashboardController implements Initializable {
     public Label lbl_nmb_gerant_camping;
     public Label lbl_gerant_maison;
     public Label lbl_gerant_activité;
+
+
+    public HBox lnk_show_maison_hote;
+
     public static String email=null;
 
 
@@ -69,6 +73,8 @@ public class DashboardController implements Initializable {
         this.email=email;
     }
 
-
+    public void showMaison(){
+        SceneLoader.loadScene("MaisonGui/ShowMaison.fxml",this.lnk_show_maison_hote);
+    }
 
 }

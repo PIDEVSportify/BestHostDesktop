@@ -46,15 +46,9 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="lnk_show_stats1" alignment="CENTER_LEFT" layoutY="266.0" onMouseClicked="#showStats" prefHeight="39.0" prefWidth="229.0" styleClass="menu_item">
+            <HBox fx:id="lnk_show_maison_hote" alignment="CENTER_LEFT" layoutY="221.0" onMouseClicked="#showMaison" prefHeight="50.0" prefWidth="229.0" style="-fx-background-color: #8670B3;" styleClass="menu_item" AnchorPane.topAnchor="300.0">
                <children>
-                  <Label />
-               </children>
-            </HBox>
-            <HBox fx:id="lnk_show_users1" alignment="CENTER_LEFT" layoutX="5.0" layoutY="227.0" onMouseClicked="#showUsers" prefHeight="39.0" prefWidth="216.0" styleClass="menu_item">
-               <children>
-                  <Label />
-                  <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="158.0" text="Liste des Reservations" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <Label layoutX="10.0" layoutY="22.0" style="-fx-background-color: #8670B3;" styleClass="menu_item" text="    Gestion Maison" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

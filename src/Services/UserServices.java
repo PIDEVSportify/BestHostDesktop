@@ -294,8 +294,22 @@ public class UserServices {
         return count;
     }
 
+    public String GetRole()
+    {
+        this.conn = MyConnection.getInstance().getConn();
+        String r=null;
+        String sql="SELECT roles from user ";
+        try {
+            stm= this.conn.prepareStatement(sql);
+            ResultSet rs=stm.executeQuery();
+            rs.next();
+            r=rs.getString(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
-
+        return r;
+    }
 
 
 

@@ -19,6 +19,15 @@ public class User
     private String avatar;
     private String cin;
     private ImageView pic;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public ImageView getPic() {
         return pic;
@@ -119,6 +128,20 @@ public class User
 
     }
 
+    public User(int id, String first_name, String last_name, String email, String password, int is_banned, Timestamp created_at, String avatar, String cin, ImageView pic, String role) {
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+        this.is_banned = is_banned;
+        this.created_at = created_at;
+        this.avatar = avatar;
+        this.cin = cin;
+        this.pic = pic;
+        this.role = role;
+    }
+
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
@@ -133,8 +156,7 @@ public class User
     }
 
 
-
-
-
-
+    public String GetRole() {
+        return getRole();
+    }
 }

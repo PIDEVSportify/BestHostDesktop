@@ -19,10 +19,10 @@ public class Main extends Application {
 
         Parent root = null;
         try {
-         //root = FXMLLoader.load(getClass().getResource("Templates/LoginGui/Login.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Templates/LoginGui/Login.fxml"));
         //root = FXMLLoader.load(getClass().getResource("Templates/AdminGui/Dashboard.fxml"));
            // root = FXMLLoader.load(getClass().getResource("Templates/MaisonGui/AddMaison.fxml"));
-            root = FXMLLoader.load(getClass().getResource("Templates/MaisonGui/ShowMaison.fxml"));
+          // root = FXMLLoader.load(getClass().getResource("Templates/MaisonGui/ShowMaison.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
